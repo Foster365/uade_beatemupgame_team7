@@ -22,6 +22,7 @@ public class MoveState<T> : FSMState<T>
     public override void Awake()
     {
         Debug.Log("MoveState");
+
     }
 
     public override void Execute()
