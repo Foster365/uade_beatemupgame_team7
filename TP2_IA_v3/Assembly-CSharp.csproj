@@ -84,6 +84,15 @@
     <Compile Include="Assets\Scripts\Player\Basics\Player.cs" />
     <Compile Include="Assets\Scripts\Player\Basics\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\Player\Basics\PlayerController.cs" />
+    <None Include="Assets\3D Beat Em Up Assets\Shaders\MatCapSimple.shader" />
+    <None Include="Assets\3D Beat Em Up Assets\Shaders\AdditiveTint.shader" />
+    <None Include="Assets\3D Beat Em Up Assets\Shaders\UntilIlum.shader" />
+    <None Include="Assets\3D Beat Em Up Assets\Shaders\UnlitLightMapEmissive.shader" />
+    <None Include="Assets\3D Beat Em Up Assets\Hit FX\Shaders\AdditiveInFront.shader" />
+    <None Include="Assets\3D Beat Em Up Assets\Shaders\MatCapAdd.shader" />
+    <None Include="Assets\3D Beat Em Up Assets\Models\Enemy\EnemyNames.txt" />
+    <None Include="Assets\3D Beat Em Up Assets\Shaders\SimpleAlphaColor.shader" />
+    <None Include="Assets\3D Beat Em Up Assets\Shaders\UnlitLightMapEmissiveCubeMap.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
