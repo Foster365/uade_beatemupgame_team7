@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCombat : MonoBehaviour
 {
-    public GameObject bullet;
+    // public GameObject bullet;
     float timer;
     public float attackspeed;
 
@@ -17,18 +17,18 @@ public class EnemyCombat : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (attack && timer >= attackspeed)
-        {
-            Attack();
-            timer = 0;
-        }
+        // timer += Time.deltaTime;
+        // if (attack && timer >= attackspeed)
+        // {
+        //     Attack();
+        //     timer = 0;
+        // }
     }
 
     void Attack()
     {
-        GameObject bulletObject = Instantiate(bullet);
-        bulletObject.transform.position = transform.position + transform.forward;
-        bulletObject.transform.forward = transform.forward;
+        // GameObject bulletObject = Instantiate(bullet);
+        // bulletObject.transform.position = transform.position + transform.forward;
+        // bulletObject.transform.forward = transform.forward;
     }
 }
