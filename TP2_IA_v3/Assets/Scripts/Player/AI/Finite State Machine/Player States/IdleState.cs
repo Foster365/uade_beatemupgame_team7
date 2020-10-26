@@ -6,12 +6,14 @@ public class IdleState<T> : FSMState<T>
 {
     FSM<T> _fsm;
     T _moveInput;
-    T _jumpInput;
-    public IdleState(FSM<T> fsm, T mI, T jI)
+    T _attackInput;
+    PlayerAnimation _anim;
+    public IdleState(FSM<T> fsm, PlayerAnimation anim, T mI, T aI)
     {
         _fsm = fsm;
         _moveInput = mI;
-        _jumpInput = jI;
+        _attackInput = aI;
+        _anim = anim;
     }
     public override void Execute()
     {
@@ -21,14 +23,16 @@ public class IdleState<T> : FSMState<T>
         {
             _fsm.Transition(_moveInput);
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.K))
         {
-            _fsm.Transition(_jumpInput);
+            
+            _fsm.Transition(_attackInput);
         }
     }
     public override void Awake()
     {
         Debug.Log("IdleState");
+        _anim.Walk(false);
     }
     public override void Sleep()
     {

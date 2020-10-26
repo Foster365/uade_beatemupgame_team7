@@ -8,20 +8,24 @@ public class MoveState<T> : FSMState<T>
     //View: Animaciones
     //Controller: Cerebro
     IMove _entity;
-    T _jumpInput;
+    T _attackInput;
     T _idleInput;
+    PlayerAnimation _anim;
     FSM<T> _fsm;
-    public MoveState(IMove e, FSM<T> fsm, T jI, T iI)
+
+    public MoveState(IMove e, FSM<T> fsm,PlayerAnimation anim, T aI, T iI)
     {
         _fsm = fsm;
-        _jumpInput = jI;
+        _attackInput = aI;
         _idleInput = iI;
         _entity = e;
+        _anim = anim;
     }
 
     public override void Awake()
     {
         Debug.Log("MoveState");
+        _anim.Walk(true);
 
     }
 
@@ -36,9 +40,9 @@ public class MoveState<T> : FSMState<T>
             //Realizar una transicion
             _fsm.Transition(_idleInput);
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.K)|| Input.GetKey(KeyCode.J))
         {
-            _fsm.Transition(_jumpInput);
+            _fsm.Transition(_attackInput);
         }
     }
 }

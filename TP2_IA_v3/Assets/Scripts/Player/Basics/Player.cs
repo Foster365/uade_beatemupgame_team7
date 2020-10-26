@@ -28,7 +28,7 @@ public class Player : MonoBehaviour, IMove
         if(dir.x != 0 || dir.z != 0)
         transform.forward = dir;
         
-        Debug.Log(dir);
+        //Debug.Log(dir);
         //_playerAnimation.RunAnim(_rb.velocity.magnitude);
     }
     public void TakeDamage(float damage)

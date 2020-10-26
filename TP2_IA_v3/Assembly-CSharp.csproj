@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Enemies\Basics\EnemyCombat.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\FSM.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\FSMState.cs" />
+    <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\Attack State.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\IdleState.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\JumpState.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\MoveState.cs" />

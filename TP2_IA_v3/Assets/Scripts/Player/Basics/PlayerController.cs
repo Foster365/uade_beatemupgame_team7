@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody _rb;
     Player _player;
     public PlayerAnimation player_anim;
+
     void Start()
     {
         player_anim = GetComponentInChildren<PlayerAnimation>();
@@ -15,20 +16,21 @@ public class PlayerController : MonoBehaviour
         _player = GetComponent<Player>();
         _fsm = new FSM<string>();
         
-        IdleState<string> idle = new IdleState<string>(_fsm, "Move", "Jump");
-        MoveState<string> move = new MoveState<string>(_player, _fsm, "Jump", "Idle");
-        JumpState<string> jump = new JumpState<string>(_fsm, "Idle", _rb, _player);
+        IdleState<string> idle = new IdleState<string>(_fsm, player_anim,"Move", "Attack");
+        MoveState<string> move = new MoveState<string>(_player, _fsm, player_anim, "Attack", "Idle");
+        //JumpState<string> jump = new JumpState<string>(_fsm, "Idle", _rb, _player);
+        AttackState<string> attack = new AttackState<string>(_fsm, player_anim, "Idle");
 
-        //FSMStatePRO<string> fsmStatePRO = new FSMStatePRO<string>();
-        //fsmStatePRO.OnExecute = MoveState;
-
+       
         idle.AddTransition("Move", move);
-        idle.AddTransition("Jump", jump);
+        idle.AddTransition("Attack", attack);
 
         move.AddTransition("Idle", idle);
-        move.AddTransition("Jump", jump);
+        move.AddTransition("Attack", attack);
 
-        jump.AddTransition("Idle", idle);
+        //jump.AddTransition("Idle", idle);
+
+        attack.AddTransition("Idle", idle);
 
         _fsm.SetInit(idle);
     }
