@@ -23,7 +23,7 @@ public class IdleState<T> : FSMState<T>
         {
             _fsm.Transition(_moveInput);
         }
-        if (Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.K))
+        else if (Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.K))
         {
             
             _fsm.Transition(_attackInput);

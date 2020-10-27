@@ -2,30 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolStateEnemy<T>:FSMState<T>
+public class SeekStateEnemy<T>:FSMState<T>
 {
     Enemy _enemy;
     EnemyAnimations _enemyAnimations;
-    public PatrolStateEnemy(Enemy enemy, EnemyAnimations enemyAnimations)
+    public SeekStateEnemy(Enemy enemy, EnemyAnimations enemyAnimations)
     {
         _enemy=enemy;
         _enemyAnimations=enemyAnimations;
     }
-    
+
     public override void Awake()
     {
-        Debug.Log("Enemy Idle State Awake");
+        Debug.Log("Enemy SeekState Awake");
     }
 
     public override void Execute()
     {
-        Debug.Log("Enemy Idle State Execute");
-        _enemy.GoToWaypoint();
-        _enemyAnimations.MoveAnimation(true);
+        Debug.Log("Enemy SeekState Execute");
     }
 
     public override void Sleep()
     {
-        Debug.Log("Enemy Idle State Sleep");
+        Debug.Log("Enemy SeekState Sleep");
     }
 }
