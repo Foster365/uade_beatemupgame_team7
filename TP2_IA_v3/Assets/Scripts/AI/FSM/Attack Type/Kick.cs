@@ -6,14 +6,12 @@ public class Kick<T> : Attack<T>
 {
     Animator _animator;
     
-    public Kick(T _character, T _target, Animator animator)
+    public Kick(T _character)
     {
         character=_character;
-        animator=_animator;
     }
+    public override void AttackTarget(GameObject target)
+    {
 
-    // public override void DoAttack(T target)
-    // {
-    //      OnAttack?.Invoke();
-    // }
+    }
 }

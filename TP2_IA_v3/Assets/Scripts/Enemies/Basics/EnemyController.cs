@@ -54,15 +54,16 @@ public class EnemyController : MonoBehaviour
         IdleStateEnemy<string> idleStateEnemy=new IdleStateEnemy<string>(_enemyAnimations);
         PatrolStateEnemy<string> patrolStateEnemy=new PatrolStateEnemy<string>(_enemy, _enemyAnimations);
         SeekStateEnemy<string> seekStateEnemy=new SeekStateEnemy<string>(_enemy, _enemyAnimations);
-        AttackStateEnemy<string> attackStateEnemy=new AttackStateEnemy<string>(_enemy, _enemyAnimations);
+        KickStateEnemy<string> kickStateEnemy=new KickStateEnemy<string>(_enemy, _enemyAnimations);
+        PunchStateEnemy<string> punchStateEnemy=new PunchStateEnemy<string>(_enemy, _enemyAnimations);
         DieStateEnemy<string> dieStateEnemy=new DieStateEnemy<string>(_enemy, _enemyAnimations);
 
         idleStateEnemy.AddTransition("PatrolStateEnemy", patrolStateEnemy);        
         patrolStateEnemy.AddTransition("IdleStateEnemy", idleStateEnemy)                                                                                                   ;
 
         patrolStateEnemy.AddTransition("SeekStateEnemy", seekStateEnemy);
-        seekStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
-        attackStateEnemy.AddTransition("DieStateEnemy", dieStateEnemy);
+        // seekStateEnemy.AddTransition("AttackStateEnemy", initialNode);
+        // initialNode.AddTransition("DieStateEnemy", dieStateEnemy);
 
         sight = gameObject.GetComponent<LineOfSight>();
         seek = gameObject.GetComponent<Seek>();

@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Punch <T> : Attack<T>
+public class Punch<T> : Attack<T>
 {
     Animator _animator;
     
-    public Punch(T _character, T _target, Animator animator)
+    public Punch(T _character)
     {
         character=_character;
-        animator=_animator;
+    }
+
+    public override void AttackTarget(GameObject target)
+    {
+        
     }
 
 }
