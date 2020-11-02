@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657886, g: 0.4964127, b: 0.57481724, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -325,6 +325,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 483546201}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &388395179 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 87886e989f329e84fbd053fbcaff4f6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 483546201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &388395180 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 87886e989f329e84fbd053fbcaff4f6b,
@@ -484,6 +490,19 @@ MonoBehaviour:
   speed: 2
   rotSpeed: 5
   move: 0
+--- !u!114 &388395189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388395178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8a08e297f4a384eb43d05f1d3b7e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 388395179}
 --- !u!1 &396619621
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +755,15 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: 87886e989f329e84fbd053fbcaff4f6b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 56f570087643e8647a231b8640ba6623, type: 2}
+      objectReference: {fileID: 9100000, guid: f59835ad579a3784ab5f2a7660c3cdce, type: 2}
+    - target: {fileID: 9500000, guid: 87886e989f329e84fbd053fbcaff4f6b, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 87886e989f329e84fbd053fbcaff4f6b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 87886e989f329e84fbd053fbcaff4f6b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -775,7 +802,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 388395180}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:

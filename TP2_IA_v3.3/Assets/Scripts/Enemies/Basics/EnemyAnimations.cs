@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class EnemyAnimations : MonoBehaviour
 {
-    Animator _animator;
     
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
-
+    public Animator _animator;
+    
     public void MoveAnimation(bool isMoving)
     {
         _animator.SetBool("Moving", isMoving);
