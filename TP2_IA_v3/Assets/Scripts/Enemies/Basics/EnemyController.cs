@@ -94,7 +94,7 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         // initialNode.Execute();
-        _enemy.GoToWaypoint();
+        _fsm.OnUpdate();
     }
 
     private void CreateDecisionTree()

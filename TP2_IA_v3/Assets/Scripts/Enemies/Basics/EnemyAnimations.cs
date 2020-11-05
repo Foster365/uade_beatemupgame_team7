@@ -10,7 +10,7 @@ public class EnemyAnimations : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-
+    
     public void MoveAnimation(bool isMoving)
     {
         _animator.SetBool("Moving", isMoving);

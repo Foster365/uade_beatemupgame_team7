@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\AI\Pathfinding\NodePathfinding.cs" />
      <Compile Include="Assets\Scripts\AI\Roulette Wheel\Roulette.cs" />
      <Compile Include="Assets\Scripts\AI\Steering Behaviours\SteeringBehaviour.cs" />
+     <Compile Include="Assets\Scripts\CharacterAttributes\Collider.cs" />
      <Compile Include="Assets\Scripts\Enemies\AI\Finite State Machine\Enemy States\AttackStateEnemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\AI\Finite State Machine\Enemy States\DieStateEnemy.cs" />
      <Compile Include="Assets\Scripts\Enemies\AI\Finite State Machine\Enemy States\IdleStateEnemy.cs" />

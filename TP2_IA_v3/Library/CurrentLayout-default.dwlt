@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 544}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -96,7 +96,7 @@ MonoBehaviour:
     y: 0
     width: 1600
     height: 1157
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 544}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &5
 MonoBehaviour:
@@ -435,9 +435,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 72260000
+      m_SelectedIDs: 243c0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 5afbffff
+      m_ExpandedIDs: 76fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 0, y: 1.3994155, z: 0}
     speed: 2
-    m_Value: {x: 0, y: 1.3994155, z: 0}
+    m_Value: {x: 0.00000087618787, y: 1.399418, z: -0.0000014126301}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -530,11 +530,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.11536654, y: -0.037252866, z: 0.0046781246, w: 0.9926784}
     speed: 2
-    m_Value: {x: 0.115359075, y: -0.037250455, z: 0.004677822, w: 0.99261415}
+    m_Value: {x: -0.11536654, y: 0.037252866, z: -0.0046781246, w: -0.99267834}
   m_Size:
-    m_Target: 4.0173993
+    m_Target: 22
     speed: 2
-    m_Value: 4.0173993
+    m_Value: 22.000055
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -707,20 +707,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/AI/Decision Trees
+    - Assets/Scripts/CharacterAttributes
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/AI/Decision Trees
+  - Assets/Scripts/CharacterAttributes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Barbara\Documents\GitHub\TP2_AI_Project\TP2_IA_v3
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 120}
-    m_SelectedIDs: 44320000
-    m_LastClickedID: 12868
-    m_ExpandedIDs: 00000000682e0000a42e0000e82e0000642f0000263000005e3000009e310000cc320000643300006633000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 1e3c0000
+    m_LastClickedID: 15390
+    m_ExpandedIDs: 000000001c2e0000582e00009c2e0000503100001833000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -748,7 +748,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000682e0000a42e0000e82e0000642f0000263000005e3000009e310000cc3200006433000066330000
+    m_ExpandedIDs: 000000001c2e0000582e00009c2e0000182f0000da2f000012300000503100007e3200001633000018330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -779,20 +779,20 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c623000000000000e62f0000e22c0000023d0000983d0000343e00003a380000d02e0000dc34000078310000a2300000383200000c320000c2320000de320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Roulette Wheel Selection
-      m_OriginalName: Roulette Wheel Selection
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 15434
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 12}
+      m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -916,8 +916,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1140
-    y: 101
-    width: 450
-    height: 968
+    x: 1138
+    y: 73
+    width: 460
+    height: 1088
   m_ViewDataDictionary: {fileID: 0}
