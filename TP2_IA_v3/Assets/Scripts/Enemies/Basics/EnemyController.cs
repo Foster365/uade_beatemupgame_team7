@@ -32,6 +32,9 @@ public class EnemyController : MonoBehaviour
     public float iterations;
     //
 
+    Roulette _roulette;
+    Dictionary<Node,int> _rouletteNodes=new Dictionary<Node, int>();
+    Node _initNode;
     Enemy _enemy;
     EnemyAnimations _enemyAnimations;
 
@@ -50,6 +53,21 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         _fsm=new FSM<string>();
+
+        _roulette=new Roulette();
+
+        ActionNode punch=new ActionNode(_enemy.Punch);
+        ActionNode kick=new ActionNode(_enemy.Kick);
+
+        _rouletteNodes.Add(punch,30);
+        _rouletteNodes.Add(kick,50);
+
+        ActionNode rouletteAction=new ActionNode(RouletteAction);
+
+        QuestionNode HowShouldIAttack=new QuestionNode(_enemy.HowShouldIAttack, punch, kick);
+        _initNode=HowShouldIAttack;//Armar esta parte bien, falta hacer que se relacione como corresponde y
+        //y que llame a los estados que corresponden (Ver si conviene poner las funciones de los actionNodes
+        //en la clase main o si conviene ponerlas en cada estado, hacer una referencia y llamarlos desde ahí)
 
         IdleStateEnemy<string> idleStateEnemy=new IdleStateEnemy<string>(_enemyAnimations);
         PatrolStateEnemy<string> patrolStateEnemy=new PatrolStateEnemy<string>(_enemy, _enemyAnimations);
@@ -90,6 +108,12 @@ public class EnemyController : MonoBehaviour
 
 
         initialNode = doIHaveTarget;
+    }
+
+    public void RouletteAction()
+    {
+        Node nodeRoulette=_roulette.Run(_rouletteNodes);
+        nodeRoulette.Execute();
     }
 
     private void Attack()

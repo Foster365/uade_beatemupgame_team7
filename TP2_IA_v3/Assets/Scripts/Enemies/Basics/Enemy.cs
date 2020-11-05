@@ -74,4 +74,20 @@ public class Enemy : MonoBehaviour
         return true;
         
     }
+
+    public bool HowShouldIAttack()
+    {
+        return true;
+    }
+    
+    public void Punch()
+    {
+        //Punch code   
+    }
+
+    public void Kick()
+    {
+        //Kick code
+    }
+    
 }

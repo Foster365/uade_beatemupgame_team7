@@ -6,6 +6,8 @@ public class AttackStateEnemy<T>:FSMState<T>
 {
     Enemy _enemy;
     EnemyAnimations _enemyAnimations;
+
+    
     public AttackStateEnemy(Enemy enemy, EnemyAnimations enemyAnimations)
     {
         _enemy=enemy;
