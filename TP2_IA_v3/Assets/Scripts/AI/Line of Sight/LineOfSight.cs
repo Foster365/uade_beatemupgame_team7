@@ -39,7 +39,7 @@ public class LineOfSight : MonoBehaviour
     {
 
         Target = null;
-        Collider[] overlapSphere = Physics.OverlapSphere(transform.position, viewDistance, player, QueryTriggerInteraction.Ignore);
+        UnityEngine.Collider[] overlapSphere = Physics.OverlapSphere(transform.position, viewDistance, player, QueryTriggerInteraction.Ignore);
         if (overlapSphere.Length > 0)
         {
             Target = overlapSphere[0].transform;

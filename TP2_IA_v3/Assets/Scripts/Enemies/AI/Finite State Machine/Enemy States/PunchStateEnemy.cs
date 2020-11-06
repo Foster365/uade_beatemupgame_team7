@@ -26,6 +26,7 @@ public class PunchStateEnemy<T>:FSMState<T>
     {
         Debug.Log("Enemy KickState Execute");
 
+        _enemyAnimations.KickAnimation();
     }
 
     public override void Sleep()

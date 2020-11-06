@@ -79,7 +79,7 @@ public class ObstacleAvoidance : MonoBehaviour
         closerObstacle = null;
 
         // Conseguimos todos nuestros obstaculos
-        Collider[] overlapSphere = Physics.OverlapSphere(transform.position, radius, layerObstacle, QueryTriggerInteraction.Ignore);
+        UnityEngine.Collider[] overlapSphere = Physics.OverlapSphere(transform.position, radius, layerObstacle, QueryTriggerInteraction.Ignore);
         if (overlapSphere.Length > 0)
         {
             //Tomamos el primero como nuestro posible obstaculo más cercano.

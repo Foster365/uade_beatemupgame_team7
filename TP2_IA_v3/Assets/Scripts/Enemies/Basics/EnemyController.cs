@@ -86,8 +86,9 @@ public class EnemyController : MonoBehaviour
         sight = gameObject.GetComponent<LineOfSight>();
         seek = gameObject.GetComponent<Seek>();
         obstacleavoidance = gameObject.GetComponent<ObstacleAvoidance>();
-        timer = 0;
         combat = gameObject.GetComponent<EnemyCombat>();
+        timer = 0;
+
         CreateDecisionTree();
     }
 

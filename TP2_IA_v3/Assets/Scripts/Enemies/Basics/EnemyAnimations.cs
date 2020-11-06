@@ -5,42 +5,30 @@ using UnityEngine;
 public class EnemyAnimations : MonoBehaviour
 {
     Animator _animator;
-    
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
-    
+
     public void MoveAnimation(bool isMoving)
     {
-        _animator.SetBool("Moving", isMoving);
-    }
-    public void AttackAnimation(bool isAttacking)
-    {
-        _animator.SetBool("Attack", isAttacking);
-    }
-    public void APunchAnimation(bool isAPunch)
-    {
-        _animator.SetBool("APunch", isAPunch);
-    }
-    public void BPunchAnimation(bool isBPunch)
-    {
-        _animator.SetBool("BPunch", isBPunch);
-    }
-    
-    public void AKickAnimation(bool isAKick)
-    {
-        _animator.SetBool("AKick", isAKick);
+        _animator.SetBool(EnemyAnimationTags.ENEMY_MOVEMENT, isMoving);
     }
 
-    public void BKickAnimation(bool isBKick)
+    public void PunchAnimation()
     {
-        _animator.SetBool("BKick", isBKick);
+        _animator.SetTrigger(EnemyAnimationTags.ENEMY_PUNCH);
     }
 
-    public void BlockAnimation(bool isBLockng)
+    public void KickAnimation()
     {
-        _animator.SetBool("Blocking", isBLockng);
+        _animator.SetTrigger(EnemyAnimationTags.ENEMY_KICK);
+    }
+
+    public void BlockAnimation()
+    {
+        _animator.SetTrigger(EnemyAnimationTags.ENEMY_BLOCK);
     }
 
 }
