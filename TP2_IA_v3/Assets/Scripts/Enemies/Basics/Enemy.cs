@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    public float maxHealth = 100;
+    float currentHealth;
+    public bool dead;
     public float movementSpeed;
     bool _isMoving;
 
@@ -26,12 +28,20 @@ public class Enemy : MonoBehaviour
     Transform _transform;
     Rigidbody _rigidbody;
 
+    public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
+
     private void Awake()
     {
         _transform=GetComponent<Transform>();
         _rigidbody=GetComponent<Rigidbody>();   
     }
-    
+
+    private void Start()
+    {
+        CurrentHealth = maxHealth;
+        
+    }
+
     public void Move(Vector3 dir)
     {
         

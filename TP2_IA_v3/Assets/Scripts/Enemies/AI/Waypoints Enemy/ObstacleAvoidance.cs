@@ -12,7 +12,7 @@ public class ObstacleAvoidance : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float radius;
     private int currentIndexNode;
-    private const float threshold = 5f;
+    private const float threshold = 1f;
   
 
     private Transform closerObstacle;
