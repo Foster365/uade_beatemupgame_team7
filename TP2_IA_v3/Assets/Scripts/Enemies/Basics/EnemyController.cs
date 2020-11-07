@@ -41,9 +41,10 @@ public class EnemyController : MonoBehaviour
     private Node initialNode;
     LineOfSight sight;
     Seek seek;
+    Flee flee;
     ObstacleAvoidance obstacleavoidance;
     float timer;
-    EnemyCombat combat;
+    //EnemyCombat combat;
     public float waitime;
 
     private void Awake()
@@ -56,16 +57,16 @@ public class EnemyController : MonoBehaviour
 
         _roulette=new Roulette();
 
-        ActionNode punch=new ActionNode(_enemy.Punch);
-        ActionNode kick=new ActionNode(_enemy.Kick);
+        //ActionNode punch=new ActionNode(_enemy.Punch);
+        //ActionNode kick=new ActionNode(_enemy.Kick);
 
-        _rouletteNodes.Add(punch,30);
-        _rouletteNodes.Add(kick,50);
+        //_rouletteNodes.Add(punch,30);
+        //_rouletteNodes.Add(kick,50);
 
-        ActionNode rouletteAction=new ActionNode(RouletteAction);
+        //ActionNode rouletteAction=new ActionNode(RouletteAction);
 
-        QuestionNode HowShouldIAttack=new QuestionNode(_enemy.HowShouldIAttack, punch, kick);
-        _initNode=HowShouldIAttack;//Armar esta parte bien, falta hacer que se relacione como corresponde y
+        //QuestionNode HowShouldIAttack=new QuestionNode(_enemy.HowShouldIAttack, punch, kick);
+        //_initNode=HowShouldIAttack;//Armar esta parte bien, falta hacer que se relacione como corresponde y
         //y que llame a los estados que corresponden (Ver si conviene poner las funciones de los actionNodes
         //en la clase main o si conviene ponerlas en cada estado, hacer una referencia y llamarlos desde ahí)
 
@@ -85,8 +86,10 @@ public class EnemyController : MonoBehaviour
 
         sight = gameObject.GetComponent<LineOfSight>();
         seek = gameObject.GetComponent<Seek>();
+        flee = gameObject.GetComponent<Flee>();
         obstacleavoidance = gameObject.GetComponent<ObstacleAvoidance>();
-        combat = gameObject.GetComponent<EnemyCombat>();
+        //combat = gameObject.GetComponent<EnemyCombat>();
+        _enemy = gameObject.GetComponent<Enemy>();
         timer = 0;
 
         CreateDecisionTree();
@@ -94,21 +97,23 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        // initialNode.Execute();
+        initialNode.Execute();
         _fsm.OnUpdate();
     }
 
     private void CreateDecisionTree()
     {
-        ActionNode Hit = new ActionNode(Attack);
+        ActionNode Follow = new ActionNode(Seek);
         ActionNode Wait = new ActionNode(Idle);
         ActionNode Patrol = new ActionNode(Patroling);
+        ActionNode Flee = new ActionNode(Fleeing);
 
         QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitime, Wait, Patrol);
-        QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Hit, doIHaveIdle);
+        QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Follow, doIHaveIdle);
+        QuestionNode doIHaveHealth = new QuestionNode(() => (_enemy.CurrentHealth / _enemy.maxHealth) <= 0.3f, Flee, doIHaveTarget);
 
 
-        initialNode = doIHaveTarget;
+        initialNode = doIHaveHealth;
     }
 
     public void RouletteAction()
@@ -121,7 +126,26 @@ public class EnemyController : MonoBehaviour
     {
         obstacleavoidance.move = false;
         seek.move = true;
-        combat.attack = true;
+        //combat.attack = true;
+    }
+
+    private void Seek()
+    {
+        obstacleavoidance.move = false;
+        seek.move = true;
+        //combat.attack = true;
+    }
+
+    private void Fleeing()
+    {
+        flee.move = true;
+        if (_enemy.dead)
+        {
+            flee.move = false;
+        }
+        seek.move = false;
+        obstacleavoidance.move = false;
+        //combat.attack = false;
     }
 
 
@@ -136,7 +160,7 @@ public class EnemyController : MonoBehaviour
             timer = 0;
         }
 
-        combat.attack = false;
+        //combat.attack = false;
     }
 
     private void Patroling()
@@ -144,6 +168,6 @@ public class EnemyController : MonoBehaviour
         seek.move = false;
         obstacleavoidance.move = true;
         timer += Time.deltaTime;
-        combat.attack = false;
+        //combat.attack = false;
     }
 }
