@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -12,6 +11,8 @@ public class Enemy : MonoBehaviour
 
     EnemyAnimations _enemyAnim;
     Transform _target;
+
+    public float attackRange;
     float currentAttackTime;
     float defaultAttackTime;
 
@@ -20,8 +21,8 @@ public class Enemy : MonoBehaviour
     //Waypoint System (Patrol) variables
     public List<Transform> Waypoints;
     public float distance;
-    int _nextWp=0;
-    int _indexModifier=1;
+    int _nextWp = 0;
+    int _indexModifier = 1;
     //
 
     //Line of Sight Variables
@@ -39,8 +40,8 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        _transform=GetComponent<Transform>();
-        _rigidbody=GetComponent<Rigidbody>();
+        _transform = GetComponent<Transform>();
+        _rigidbody = GetComponent<Rigidbody>();
 
         _enemyAnim = GetComponent<EnemyAnimations>();
 
@@ -57,12 +58,12 @@ public class Enemy : MonoBehaviour
 
     public void Move(Vector3 dir)
     {
-        
+
         dir.y = 0;
         _rigidbody.velocity = dir * movementSpeed;
         transform.forward = Vector3.Lerp(transform.forward, dir, 0.2f);
         // _enemyAnimation.RunAnimation();
-        _isMoving=true;
+        _isMoving = true;
 
     }
 
@@ -70,10 +71,10 @@ public class Enemy : MonoBehaviour
     {
 
     }
-    
+
     public void GoToWaypoint()
     {
-        
+
         var waypoint = Waypoints[_nextWp];
         var waypointPosition = waypoint.position;
         waypointPosition.y = transform.position.y;
@@ -96,26 +97,56 @@ public class Enemy : MonoBehaviour
         float distance = diff.magnitude;
         if (distance > LOSRadius) return false;
         float angleToTarget = Vector3.Angle(transform.position, diff.normalized);
-        if (angleToTarget > angle/2) return false;
+        if (angleToTarget > angle / 2) return false;
         if (Physics.Raycast(transform.position, diff, distance, layer)) return true;
 
         return true;
-        
+
     }
 
-    public bool HowShouldIAttack()
+    public bool ShouldIAttack()
     {
+        if (Vector3.Distance(transform.position, _target.position) >= attackRange)
+            return false;
         return true;
+
     }
-    
-    public void Punch()
+
+    public void APunch()
     {
+        _enemyAnim.APunchAnimation();
+        //Punch code   
+    }
+
+    public void BPunch()
+    {
+        _enemyAnim.BPunchAnimation();
         //Punch code   
     }
 
     public void Kick()
     {
+        _enemyAnim.KickAnimation();
         //Kick code
     }
-    
+
+    public void Block()
+    {
+        _enemyAnim.BlockAnimation();
+    }
+
+    public void GetDamage()
+    {
+        _enemyAnim.DamageAnimation();
+    }
+
+    public void Idle()
+    {
+        _enemyAnim.IdleAnimation();
+    }
+
+    public void Die()
+    {
+        _enemyAnim.DeathAnimation();
+    }
 }

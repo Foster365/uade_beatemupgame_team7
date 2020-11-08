@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAnimations : MonoBehaviour
 {
+
     Animator _animator;
 
     private void Awake()
@@ -16,9 +17,14 @@ public class EnemyAnimations : MonoBehaviour
         _animator.SetBool(EnemyAnimationTags.ENEMY_MOVEMENT, isMoving);
     }
 
-    public void PunchAnimation()
+    public void APunchAnimation()
     {
-        _animator.SetTrigger(EnemyAnimationTags.ENEMY_PUNCH);
+        _animator.SetTrigger(EnemyAnimationTags.ENEMY_APUNCH);
+    }
+
+    public void BPunchAnimation()
+    {
+        _animator.SetTrigger(EnemyAnimationTags.ENEMY_APUNCH);
     }
 
     public void KickAnimation()
@@ -29,6 +35,21 @@ public class EnemyAnimations : MonoBehaviour
     public void BlockAnimation()
     {
         _animator.SetTrigger(EnemyAnimationTags.ENEMY_BLOCK);
+    }
+
+    public void DamageAnimation()
+    {
+        _animator.SetTrigger(EnemyAnimationTags.ENEMY_DAMAGED);
+    }
+
+    public void IdleAnimation()
+    {
+        _animator.SetTrigger(EnemyAnimationTags.ENEMY_IDLE);
+    }
+
+    public void DeathAnimation()
+    {
+        _animator.SetTrigger(EnemyAnimationTags.ENEMY_DEATH);
     }
 
 }

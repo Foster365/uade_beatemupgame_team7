@@ -7,12 +7,15 @@ public class EnemyAnimationTags
 
     public const string ENEMY_MOVEMENT = "Moving";
 
-    public const string ENEMY_PUNCH = "Punch";
+    public const string ENEMY_APUNCH = "APunch";
+    public const string ENEMY_BPUNCH = "BPunch";
     public const string ENEMY_KICK = "Kick";
     public const string ENEMY_BLOCK = "Block";
 
     public const string ENEMY_IDLE = "Idle";
+    public const string ENEMY_DAMAGED = "Damaged";
     public const string ENEMY_DEATH = "Death";
+
 }
 
 public class CharacterTags

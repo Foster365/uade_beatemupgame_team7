@@ -31860,25 +31860,4 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.22436929
-    functionName: PlaySFX
-    data: Whoosh
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.2452743
-    functionName: AddForce
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 1.5
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.33709073
-    functionName: Check4Hit
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

@@ -33,9 +33,10 @@ public class EnemyController : MonoBehaviour
     //
 
     Roulette _roulette;
-    Dictionary<Node,int> _rouletteNodes=new Dictionary<Node, int>();
+    Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
     Node _initNode;
     Enemy _enemy;
+
     EnemyAnimations _enemyAnimations;
 
     private Node initialNode;
@@ -49,38 +50,24 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
-        _rigidbody=GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
+        _enemyAnimations = GetComponent<EnemyAnimations>();
     }
     private void Start()
     {
-        _fsm=new FSM<string>();
+        _fsm = new FSM<string>();
 
-        _roulette=new Roulette();
+        //IdleStateEnemy<string> idleStateEnemy=new IdleStateEnemy<string>(_enemyAnimations);
+        //PatrolStateEnemy<string> patrolStateEnemy=new PatrolStateEnemy<string>(_enemy, _enemyAnimations);
+        //SeekStateEnemy<string> seekStateEnemy=new SeekStateEnemy<string>(_enemy, _enemyAnimations);
+        //KickStateEnemy<string> kickStateEnemy=new KickStateEnemy<string>(_enemy, _enemyAnimations);
+        //PunchStateEnemy<string> punchStateEnemy=new PunchStateEnemy<string>(_enemy, _enemyAnimations);
+        //DieStateEnemy<string> dieStateEnemy=new DieStateEnemy<string>(_enemy, _enemyAnimations);
 
-        //ActionNode punch=new ActionNode(_enemy.Punch);
-        //ActionNode kick=new ActionNode(_enemy.Kick);
+        //idleStateEnemy.AddTransition("PatrolStateEnemy", patrolStateEnemy);        
+        //patrolStateEnemy.AddTransition("IdleStateEnemy", idleStateEnemy)                                                                                                   ;
 
-        //_rouletteNodes.Add(punch,30);
-        //_rouletteNodes.Add(kick,50);
-
-        //ActionNode rouletteAction=new ActionNode(RouletteAction);
-
-        //QuestionNode HowShouldIAttack=new QuestionNode(_enemy.HowShouldIAttack, punch, kick);
-        //_initNode=HowShouldIAttack;//Armar esta parte bien, falta hacer que se relacione como corresponde y
-        //y que llame a los estados que corresponden (Ver si conviene poner las funciones de los actionNodes
-        //en la clase main o si conviene ponerlas en cada estado, hacer una referencia y llamarlos desde ahí)
-
-        IdleStateEnemy<string> idleStateEnemy=new IdleStateEnemy<string>(_enemyAnimations);
-        PatrolStateEnemy<string> patrolStateEnemy=new PatrolStateEnemy<string>(_enemy, _enemyAnimations);
-        SeekStateEnemy<string> seekStateEnemy=new SeekStateEnemy<string>(_enemy, _enemyAnimations);
-        KickStateEnemy<string> kickStateEnemy=new KickStateEnemy<string>(_enemy, _enemyAnimations);
-        PunchStateEnemy<string> punchStateEnemy=new PunchStateEnemy<string>(_enemy, _enemyAnimations);
-        DieStateEnemy<string> dieStateEnemy=new DieStateEnemy<string>(_enemy, _enemyAnimations);
-
-        idleStateEnemy.AddTransition("PatrolStateEnemy", patrolStateEnemy);        
-        patrolStateEnemy.AddTransition("IdleStateEnemy", idleStateEnemy)                                                                                                   ;
-
-        patrolStateEnemy.AddTransition("SeekStateEnemy", seekStateEnemy);
+        //patrolStateEnemy.AddTransition("SeekStateEnemy", seekStateEnemy);
         // seekStateEnemy.AddTransition("AttackStateEnemy", initialNode);
         // initialNode.AddTransition("DieStateEnemy", dieStateEnemy);
 
@@ -101,6 +88,23 @@ public class EnemyController : MonoBehaviour
         _fsm.OnUpdate();
     }
 
+    private void RouletteWheel()
+    {
+
+        _roulette = new Roulette();
+
+        ActionNode aPunch = new ActionNode(_enemy.APunch);
+        ActionNode bPunch = new ActionNode(_enemy.BPunch);
+        ActionNode Kick = new ActionNode(_enemy.Kick);
+
+        _rouletteNodes.Add(aPunch, 30);
+        _rouletteNodes.Add(bPunch, 35);
+        _rouletteNodes.Add(Kick, 50);
+
+        ActionNode rouletteAction = new ActionNode(RouletteAction);
+
+    }
+
     private void CreateDecisionTree()
     {
         ActionNode Follow = new ActionNode(Seek);
@@ -108,17 +112,28 @@ public class EnemyController : MonoBehaviour
         ActionNode Patrol = new ActionNode(Patroling);
         ActionNode Flee = new ActionNode(Fleeing);
 
+        ActionNode Attack = new ActionNode(_enemy.Attack);
+        //ActionNode APunch = new ActionNode(_enemy.APunch);
+        //ActionNode BPunch = new ActionNode(_enemy.BPunch);
+        //ActionNode Kick = new ActionNode(_enemy.Kick);
+        ActionNode Block = new ActionNode(_enemy.Block);
+
         QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitime, Wait, Patrol);
         QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Follow, doIHaveIdle);
         QuestionNode doIHaveHealth = new QuestionNode(() => (_enemy.CurrentHealth / _enemy.maxHealth) <= 0.3f, Flee, doIHaveTarget);
+        QuestionNode shouldIAttack = new QuestionNode(_enemy.ShouldIAttack, Attack, Follow);
 
+        //QuestionNode HowShouldIAttack = new QuestionNode(_enemy.HowShouldIAttack, rouletteAction, kick);
+        //Armar esta parte bien, falta hacer que se relacione como corresponde y
+        //y que llame a los estados que corresponden (Ver si conviene poner las funciones de los actionNodes
+        //en la clase main o si conviene ponerlas en cada estado, hacer una referencia y llamarlos desde ahí)
 
         initialNode = doIHaveHealth;
     }
 
     public void RouletteAction()
     {
-        Node nodeRoulette=_roulette.Run(_rouletteNodes);
+        Node nodeRoulette = _roulette.Run(_rouletteNodes);
         nodeRoulette.Execute();
     }
 
@@ -135,6 +150,7 @@ public class EnemyController : MonoBehaviour
         if (Vector3.Distance(transform.position, sight.Target.position) > 1f)
         {
             seek.move = true;
+            //Debug.Log("Move Animation");
         }
         else
         {
@@ -175,6 +191,7 @@ public class EnemyController : MonoBehaviour
         seek.move = false;
         obstacleavoidance.move = true;
         timer += Time.deltaTime;
+        _enemyAnimations.MoveAnimation(true);
         //combat.attack = false;
     }
 }
