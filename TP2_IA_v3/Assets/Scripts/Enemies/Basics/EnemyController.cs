@@ -132,7 +132,14 @@ public class EnemyController : MonoBehaviour
     private void Seek()
     {
         obstacleavoidance.move = false;
-        seek.move = true;
+        if (Vector3.Distance(transform.position, sight.Target.position) > 1f)
+        {
+            seek.move = true;
+        }
+        else
+        {
+            seek.move = false;
+        }
         //combat.attack = true;
     }
 
