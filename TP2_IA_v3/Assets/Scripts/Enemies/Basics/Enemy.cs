@@ -10,6 +10,13 @@ public class Enemy : MonoBehaviour
     public float movementSpeed;
     bool _isMoving;
 
+    EnemyAnimations _enemyAnim;
+    Transform _target;
+    float currentAttackTime;
+    float defaultAttackTime;
+
+    bool attackTarget;
+
     //Waypoint System (Patrol) variables
     public List<Transform> Waypoints;
     public float distance;
@@ -33,13 +40,19 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         _transform=GetComponent<Transform>();
-        _rigidbody=GetComponent<Rigidbody>();   
+        _rigidbody=GetComponent<Rigidbody>();
+
+        _enemyAnim = GetComponent<EnemyAnimations>();
+
     }
 
     private void Start()
     {
         CurrentHealth = maxHealth;
-        
+
+        _target = GameObject.FindWithTag(CharacterTags.PLAYER_TAG).transform;
+
+        currentAttackTime = defaultAttackTime;
     }
 
     public void Move(Vector3 dir)
@@ -50,6 +63,11 @@ public class Enemy : MonoBehaviour
         transform.forward = Vector3.Lerp(transform.forward, dir, 0.2f);
         // _enemyAnimation.RunAnimation();
         _isMoving=true;
+
+    }
+
+    public void Attack()
+    {
 
     }
     

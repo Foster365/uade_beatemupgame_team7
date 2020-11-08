@@ -14,3 +14,11 @@ public class EnemyAnimationTags
     public const string ENEMY_IDLE = "Idle";
     public const string ENEMY_DEATH = "Death";
 }
+
+public class CharacterTags
+{
+
+    public const string ENEMY_TAG = "Enemy";
+    public const string PLAYER_TAG = "Player";          
+    
+}
