@@ -150,11 +150,13 @@ public class EnemyController : MonoBehaviour
         if (Vector3.Distance(transform.position, sight.Target.position) > 1f)
         {
             seek.move = true;
+            _enemyAnimations.MoveAnimation(true);
             //Debug.Log("Move Animation");
         }
         else
         {
             seek.move = false;
+            _enemyAnimations.MoveAnimation(false);
         }
         //combat.attack = true;
     }
@@ -168,6 +170,7 @@ public class EnemyController : MonoBehaviour
         }
         seek.move = false;
         obstacleavoidance.move = false;
+        _enemyAnimations.MoveAnimation(true);
         //combat.attack = false;
     }
 
@@ -177,6 +180,7 @@ public class EnemyController : MonoBehaviour
         seek.move = false;
         obstacleavoidance.move = false;
         timer += Time.deltaTime;
+        _enemyAnimations.MoveAnimation(false);
 
         if (timer >= waitime + 5)
         {
