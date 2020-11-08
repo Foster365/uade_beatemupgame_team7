@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\Enemies\Basics\EnemyAnimations.cs" />
     <Compile Include="Assets\Scripts\Enemies\Basics\EnemyCombat.cs" />
     <Compile Include="Assets\Scripts\Enemies\Basics\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\Environment\Boxes.cs" />
     <Compile Include="Assets\Scripts\Environment\Waypoint.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\Attack State.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\IdleState.cs" />
