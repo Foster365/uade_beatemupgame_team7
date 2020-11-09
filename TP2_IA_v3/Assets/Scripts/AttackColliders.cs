@@ -9,6 +9,8 @@ public class AttackColliders : MonoBehaviour
     public bool isKick;
     public bool isPunch;
 
+    public GameObject hitFX;
+
     public void Awake()
     {
         attacker = GetComponentInParent<Entity>();
