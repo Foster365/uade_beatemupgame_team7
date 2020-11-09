@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\AI\Pathfinding\NodePathfinding.cs" />
     <Compile Include="Assets\Scripts\AI\Roulette Wheel\Roulette.cs" />
     <Compile Include="Assets\Scripts\AI\Steering Behaviours\SteeringBehaviour.cs" />
+    <Compile Include="Assets\Scripts\AttackColliders.cs" />
     <Compile Include="Assets\Scripts\CharacterAttributes\CharacterCollider.cs" />
     <Compile Include="Assets\Scripts\CharacterAttributes\TagManager.cs" />
     <Compile Include="Assets\Scripts\Enemies\AI\Finite State Machine\Enemy States\AttackStateEnemy.cs" />
@@ -95,8 +96,10 @@
     <Compile Include="Assets\Scripts\Enemies\Basics\EnemyAnimations.cs" />
     <Compile Include="Assets\Scripts\Enemies\Basics\EnemyCombat.cs" />
     <Compile Include="Assets\Scripts\Enemies\Basics\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\Entity.cs" />
     <Compile Include="Assets\Scripts\Environment\Boxes.cs" />
     <Compile Include="Assets\Scripts\Environment\Waypoint.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\Attack State.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\IdleState.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\JumpState.cs" />
@@ -107,46 +110,64 @@
     <Compile Include="Assets\Scripts\Player\Basics\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\Player\Basics\PlayerController.cs" />
     <None Include="Assets\3D Beat Em Up Assets\Shaders\MatCapSimple.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\3D Beat Em Up Assets\Shaders\AdditiveTint.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\3D Beat Em Up Assets\Shaders\UntilIlum.shader" />
     <None Include="Assets\3D Beat Em Up Assets\Shaders\UnlitLightMapEmissive.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\3D Beat Em Up Assets\Hit FX\Shaders\AdditiveInFront.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\3D Beat Em Up Assets\Shaders\MatCapAdd.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\3D Beat Em Up Assets\Models\Enemy\EnemyNames.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\3D Beat Em Up Assets\Shaders\SimpleAlphaColor.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\3D Beat Em Up Assets\Shaders\UnlitLightMapEmissiveCubeMap.shader" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/toraa/Documents/GitHub/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>E:/Unity/IA/uade_fightinggame_group/TP2_IA_v3/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

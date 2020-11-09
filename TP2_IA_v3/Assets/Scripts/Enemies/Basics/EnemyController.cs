@@ -46,7 +46,7 @@ public class EnemyController : MonoBehaviour
     ObstacleAvoidance obstacleavoidance;
     float timer;
     //EnemyCombat combat;
-    public float waitime;
+    public float waitTime;
 
     private void Awake()
     {
@@ -109,7 +109,7 @@ public class EnemyController : MonoBehaviour
     {
         ActionNode Follow = new ActionNode(Seek);
         ActionNode Wait = new ActionNode(Idle);
-        ActionNode Patrol = new ActionNode(Patroling);
+        ActionNode Patrol = new ActionNode(Patrolling);
         ActionNode Flee = new ActionNode(Fleeing);
 
         ActionNode Attack = new ActionNode(_enemy.Attack);
@@ -118,9 +118,9 @@ public class EnemyController : MonoBehaviour
         //ActionNode Kick = new ActionNode(_enemy.Kick);
         ActionNode Block = new ActionNode(_enemy.Block);
 
-        QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitime, Wait, Patrol);
+        QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitTime, Wait, Patrol);
         QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Follow, doIHaveIdle);
-        QuestionNode doIHaveHealth = new QuestionNode(() => (_enemy.CurrentHealth / _enemy.maxHealth) <= 0.3f, Flee, doIHaveTarget);
+        QuestionNode doIHaveHealth = new QuestionNode(() => (_enemy.currentHealth / _enemy.maxHealth) <= 0.3f, Flee, doIHaveTarget);
         QuestionNode shouldIAttack = new QuestionNode(_enemy.ShouldIAttack, Attack, Follow);
 
         //QuestionNode HowShouldIAttack = new QuestionNode(_enemy.HowShouldIAttack, rouletteAction, kick);
@@ -182,7 +182,7 @@ public class EnemyController : MonoBehaviour
         timer += Time.deltaTime;
         _enemyAnimations.MoveAnimation(false);
 
-        if (timer >= waitime + 5)
+        if (timer >= waitTime + 5)
         {
             timer = 0;
         }
@@ -190,7 +190,7 @@ public class EnemyController : MonoBehaviour
         //combat.attack = false;
     }
 
-    private void Patroling()
+    private void Patrolling()
     {
         seek.move = false;
         obstacleavoidance.move = true;

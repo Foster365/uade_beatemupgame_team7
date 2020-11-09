@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Entity
 {
-    public float maxHealth = 100;
-    float currentHealth;
+    
     public bool dead;
     public float movementSpeed;
     bool _isMoving;
@@ -34,22 +33,15 @@ public class Enemy : MonoBehaviour
     //
 
     Transform _transform;
-    Rigidbody _rigidbody;
+    
 
-    public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
-
-    private void Awake()
-    {
-        _transform = GetComponent<Transform>();
-        _rigidbody = GetComponent<Rigidbody>();
-
-        _enemyAnim = GetComponent<EnemyAnimations>();
-
-    }
+   
 
     private void Start()
     {
-        CurrentHealth = maxHealth;
+        _transform = GetComponent<Transform>();
+        _enemyAnim = GetComponent<EnemyAnimations>();
+        
 
         _target = GameObject.FindWithTag(CharacterTags.PLAYER_TAG).transform;
 
@@ -60,7 +52,7 @@ public class Enemy : MonoBehaviour
     {
 
         dir.y = 0;
-        _rigidbody.velocity = dir * movementSpeed;
+        rb.velocity = dir * movementSpeed;
         transform.forward = Vector3.Lerp(transform.forward, dir, 0.2f);
         // _enemyAnimation.RunAnimation();
         _isMoving = true;
