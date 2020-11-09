@@ -14,37 +14,41 @@ public class CnaracterAnimDelegate : MonoBehaviour
 
     void LeftArmAttackOff()
     {
-        leftArmCollider.SetActive(false);
+        if(leftArmCollider.activeInHierarchy)
+            leftArmCollider.SetActive(false);
     }
     
     void RightArmAttackOn()
     {
-        leftArmCollider.SetActive(true);
+        rightArmCollider.SetActive(true);
     }
 
     void RightArmAttackOff()
     {
-        leftArmCollider.SetActive(false);
+        if (rightArmCollider.activeInHierarchy)
+            leftArmCollider.SetActive(false);
     }
 
     void LeftFootAttackOn()
     {
-        leftArmCollider.SetActive(true);
+        leftFootCollider.SetActive(true);
     }
 
     void LeftFootAttackOff()
     {
-        leftArmCollider.SetActive(false);
+        if (leftFootCollider.activeInHierarchy)
+            leftFootCollider.SetActive(false);
     }
 
     void RightFootAttackOn()
     {
-        leftArmCollider.SetActive(true);
+        rightFootCollider.SetActive(true);
     }
 
     void RightFootAttackOff()
     {
-        leftArmCollider.SetActive(false);
+        if (rightFootCollider.activeInHierarchy)
+            rightFootCollider.SetActive(false);
     }
 
 }
