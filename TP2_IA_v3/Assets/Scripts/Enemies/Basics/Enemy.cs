@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     bool _isMoving;
 
     EnemyAnimations _enemyAnim;
+    Animator _animator;
     Transform _target;
 
     public float attackRange;
@@ -44,6 +45,7 @@ public class Enemy : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
 
         _enemyAnim = GetComponent<EnemyAnimations>();
+        _animator = GetComponent<Animator>();
 
     }
 
@@ -67,10 +69,11 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void Attack()
-    {
-
-    }
+    //public void Attack()
+    //{
+    //    Debug.Log("Attacking player");
+    //    _animator.SetTrigger(EnemyAnimationTags.ENEMY_APUNCH);
+    //}
 
     public void GoToWaypoint()
     {
@@ -106,10 +109,10 @@ public class Enemy : MonoBehaviour
 
     public bool ShouldIAttack()
     {
-        if (Vector3.Distance(transform.position, _target.position) >= attackRange)
-            return false;
-        return true;
-
+        Debug.Log("Should I Attack?");
+        attackTarget=Vector3.Distance(transform.position, _target.position) > attackRange ? true : false;
+        Debug.Log("Attack" + attackTarget);
+        return attackTarget;
     }
 
     public void APunch()

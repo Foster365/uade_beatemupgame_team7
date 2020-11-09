@@ -1726,6 +1726,11 @@ PrefabInstance:
       propertyPath: Waypoints.Array.data[2]
       value: 
       objectReference: {fileID: 303685679}
+    - target: {fileID: 710353499781348898, guid: 9e80758e2ce23ec40a0e6b57c3917608,
+        type: 3}
+      propertyPath: attackRange
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5610221548862690213, guid: 9e80758e2ce23ec40a0e6b57c3917608,
         type: 3}
       propertyPath: sbTarget

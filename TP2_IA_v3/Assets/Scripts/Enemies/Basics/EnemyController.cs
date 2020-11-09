@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour
 
     //Line of sight variables
     public Transform target;
+    Animator _animator;
+
     //
 
     //FSM variables
@@ -52,6 +54,7 @@ public class EnemyController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _enemyAnimations = GetComponent<EnemyAnimations>();
+        _animator = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -112,17 +115,16 @@ public class EnemyController : MonoBehaviour
         ActionNode Patrol = new ActionNode(Patroling);
         ActionNode Flee = new ActionNode(Fleeing);
 
-        ActionNode Attack = new ActionNode(_enemy.Attack);
+        ActionNode Attack = new ActionNode(EnemyAttack);
         //ActionNode APunch = new ActionNode(_enemy.APunch);
         //ActionNode BPunch = new ActionNode(_enemy.BPunch);
         //ActionNode Kick = new ActionNode(_enemy.Kick);
         ActionNode Block = new ActionNode(_enemy.Block);
 
+        QuestionNode shouldIAttack = new QuestionNode(_enemy.ShouldIAttack, Attack, Follow);
         QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitime, Wait, Patrol);
         QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Follow, doIHaveIdle);
         QuestionNode doIHaveHealth = new QuestionNode(() => (_enemy.CurrentHealth / _enemy.maxHealth) <= 0.3f, Flee, doIHaveTarget);
-        QuestionNode shouldIAttack = new QuestionNode(_enemy.ShouldIAttack, Attack, Follow);
-
         //QuestionNode HowShouldIAttack = new QuestionNode(_enemy.HowShouldIAttack, rouletteAction, kick);
         //Armar esta parte bien, falta hacer que se relacione como corresponde y
         //y que llame a los estados que corresponden (Ver si conviene poner las funciones de los actionNodes
@@ -137,10 +139,13 @@ public class EnemyController : MonoBehaviour
         nodeRoulette.Execute();
     }
 
-    private void Attack()
+    private void EnemyAttack()
     {
         obstacleavoidance.move = false;
         seek.move = true;
+
+        Debug.Log("Attacking player");
+        _enemyAnimations.APunchAnimation();
         //combat.attack = true;
     }
 
