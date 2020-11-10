@@ -61,7 +61,13 @@ public class Enemy : Entity
 
     public void Attack()
     {
+        currentAttackTime += Time.deltaTime;
 
+        if(currentAttackTime>=defaultAttackTime)
+            _enemyAnim.APunchAnimation();
+
+        currentAttackTime = 0;
+        Debug.Log("Punch Anim");
     }
 
     public void GoToWaypoint()
@@ -98,10 +104,14 @@ public class Enemy : Entity
 
     public bool ShouldIAttack()
     {
-        if (Vector3.Distance(transform.position, _target.position) >= attackRange)
-            return false;
-        return true;
+        if (Vector3.Distance(transform.position, _target.position) < attackRange)
+            attackTarget = true;
+        else
+            attackTarget = false;
 
+        Debug.Log("Attack" + attackTarget);
+
+        return attackTarget;
     }
 
     public void APunch()

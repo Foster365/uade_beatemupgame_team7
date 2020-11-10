@@ -37,8 +37,8 @@ public class EnemyController : MonoBehaviour
     Node _initNode;
     Enemy _enemy;
 
-    EnemyAnimations _enemyAnimations;
-
+    public EnemyAnimations _enemyAnimations;
+   
     private Node initialNode;
     LineOfSight sight;
     Seek seek;
@@ -118,17 +118,17 @@ public class EnemyController : MonoBehaviour
         //ActionNode Kick = new ActionNode(_enemy.Kick);
         ActionNode Block = new ActionNode(_enemy.Block);
 
-        QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitTime, Wait, Patrol);
+        QuestionNode shouldIAttack = new QuestionNode(() => Vector3.Distance(transform.position, target.position)<_enemy.attackRange, Attack, Follow);
+        QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitTime, Wait, shouldIAttack);
         QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Follow, doIHaveIdle);
         QuestionNode doIHaveHealth = new QuestionNode(() => (_enemy.currentHealth / _enemy.maxHealth) <= 0.3f, Flee, doIHaveTarget);
-        QuestionNode shouldIAttack = new QuestionNode(_enemy.ShouldIAttack, Attack, Follow);
 
         //QuestionNode HowShouldIAttack = new QuestionNode(_enemy.HowShouldIAttack, rouletteAction, kick);
         //Armar esta parte bien, falta hacer que se relacione como corresponde y
         //y que llame a los estados que corresponden (Ver si conviene poner las funciones de los actionNodes
         //en la clase main o si conviene ponerlas en cada estado, hacer una referencia y llamarlos desde ahí)
 
-        initialNode = doIHaveHealth;
+        initialNode = shouldIAttack;
     }
 
     public void RouletteAction()
@@ -139,8 +139,10 @@ public class EnemyController : MonoBehaviour
 
     private void Attack()
     {
-        obstacleavoidance.move = false;
-        seek.move = true;
+        //obstacleavoidance.move = false;
+        //seek.move = true;
+        Debug.Log("Punch anim");
+        _enemyAnimations.APunchAnimation();
         //combat.attack = true;
     }
 
