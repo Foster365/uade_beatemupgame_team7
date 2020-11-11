@@ -118,8 +118,8 @@ public class EnemyController : MonoBehaviour
         //ActionNode Kick = new ActionNode(_enemy.Kick);
         ActionNode Block = new ActionNode(_enemy.Block);
 
-        QuestionNode shouldIAttack = new QuestionNode(() => Vector3.Distance(transform.position, target.position)<_enemy.attackRange, Attack, Follow);
-        QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitTime, Wait, shouldIAttack);
+        //QuestionNode shouldIAttack = new QuestionNode(() => Vector3.Distance(transform.position, target.position) < _enemy.attackRange, Attack, Follow);
+        QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitTime, Wait, Patrol);
         QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Follow, doIHaveIdle);
         QuestionNode doIHaveHealth = new QuestionNode(() => (_enemy.currentHealth / _enemy.maxHealth) <= 0.3f, Flee, doIHaveTarget);
 
@@ -128,7 +128,7 @@ public class EnemyController : MonoBehaviour
         //y que llame a los estados que corresponden (Ver si conviene poner las funciones de los actionNodes
         //en la clase main o si conviene ponerlas en cada estado, hacer una referencia y llamarlos desde ahí)
 
-        initialNode = shouldIAttack;
+        initialNode = doIHaveHealth;
     }
 
     public void RouletteAction()
@@ -149,18 +149,21 @@ public class EnemyController : MonoBehaviour
     private void Seek()
     {
         obstacleavoidance.move = false;
-        if (Vector3.Distance(transform.position, sight.Target.position) > 1f)
+        if(sight.Target != null)
         {
-            seek.move = true;
-            _enemyAnimations.MoveAnimation(true);
-            //Debug.Log("Move Animation");
+            if (Vector3.Distance(transform.position, sight.Target.position) > _enemy.attackRange)
+            {
+                seek.move = true;
+                _enemyAnimations.MoveAnimation(true);
+                //Debug.Log("Move Animation");
+            }
+            else
+            {
+                seek.move = false;
+                _enemyAnimations.MoveAnimation(false);
+            }
+            //combat.attack = true;
         }
-        else
-        {
-            seek.move = false;
-            _enemyAnimations.MoveAnimation(false);
-        }
-        //combat.attack = true;
     }
 
     private void Fleeing()
