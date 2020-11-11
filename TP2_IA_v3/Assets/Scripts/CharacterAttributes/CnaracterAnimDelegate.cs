@@ -51,4 +51,24 @@ public class CnaracterAnimDelegate : MonoBehaviour
             rightFootCollider.SetActive(false);
     }
 
+    void TagLeftArm()
+    {
+        leftArmCollider.tag = CharacterTags.LEFT_ARM_TAG;
+    }
+
+    void UntagLeftArm()
+    {
+        leftArmCollider.tag = UtilitiesTags.UNTAGGED_TAG;
+    }
+
+    void TagLeftFoot()
+    {
+        leftFootCollider.tag = CharacterTags.LEFT_FOOT_TAG;
+    }
+
+    void UntagLeftFoot()
+    {
+        leftFootCollider.tag = UtilitiesTags.UNTAGGED_TAG;
+    }
+
 }

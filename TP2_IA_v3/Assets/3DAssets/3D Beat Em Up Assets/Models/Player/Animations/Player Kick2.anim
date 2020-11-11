@@ -48924,6 +48924,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: TagLeftFoot
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.06666667
     functionName: LeftFootAttackOn
     data: 
@@ -48933,6 +48940,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.36666667
     functionName: LeftFootAttackOff
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.53333336
+    functionName: UntagLeftFoot
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
