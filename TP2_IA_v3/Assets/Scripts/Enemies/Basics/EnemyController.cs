@@ -32,9 +32,10 @@ public class EnemyController : MonoBehaviour
     public float iterations;
     //
 
-    Roulette _roulette;
-    Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
-    Node _initNode;
+    //Roulette _roulette;
+    //Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
+    //Node _initNode;
+
     Enemy _enemy;
 
     public EnemyAnimations _enemyAnimations;
@@ -57,20 +58,6 @@ public class EnemyController : MonoBehaviour
     {
         _fsm = new FSM<string>();
 
-        //IdleStateEnemy<string> idleStateEnemy=new IdleStateEnemy<string>(_enemyAnimations);
-        //PatrolStateEnemy<string> patrolStateEnemy=new PatrolStateEnemy<string>(_enemy, _enemyAnimations);
-        //SeekStateEnemy<string> seekStateEnemy=new SeekStateEnemy<string>(_enemy, _enemyAnimations);
-        //KickStateEnemy<string> kickStateEnemy=new KickStateEnemy<string>(_enemy, _enemyAnimations);
-        //PunchStateEnemy<string> punchStateEnemy=new PunchStateEnemy<string>(_enemy, _enemyAnimations);
-        //DieStateEnemy<string> dieStateEnemy=new DieStateEnemy<string>(_enemy, _enemyAnimations);
-
-        //idleStateEnemy.AddTransition("PatrolStateEnemy", patrolStateEnemy);        
-        //patrolStateEnemy.AddTransition("IdleStateEnemy", idleStateEnemy)                                                                                                   ;
-
-        //patrolStateEnemy.AddTransition("SeekStateEnemy", seekStateEnemy);
-        // seekStateEnemy.AddTransition("AttackStateEnemy", initialNode);
-        // initialNode.AddTransition("DieStateEnemy", dieStateEnemy);
-
         sight = gameObject.GetComponent<LineOfSight>();
         seek = gameObject.GetComponent<Seek>();
         flee = gameObject.GetComponent<Flee>();
@@ -88,23 +75,27 @@ public class EnemyController : MonoBehaviour
         _fsm.OnUpdate();
     }
 
-    private void RouletteWheel()
+    //private void RouletteWheel()
+    //{
+
+    //    _roulette = new Roulette();
+
+    //    ActionNode aPunch = new ActionNode(_enemy.APunch);
+    //    ActionNode bPunch = new ActionNode(_enemy.BPunch);
+    //    ActionNode Kick = new ActionNode(_enemy.Kick);
+
+    //    _rouletteNodes.Add(aPunch, 30);
+    //    _rouletteNodes.Add(bPunch, 35);
+    //    _rouletteNodes.Add(Kick, 50);
+
+    //    ActionNode rouletteAction = new ActionNode(RouletteAction);
+
+    //}
+
+    public void FSMBuilder()
     {
 
-        _roulette = new Roulette();
-
-        ActionNode aPunch = new ActionNode(_enemy.APunch);
-        ActionNode bPunch = new ActionNode(_enemy.BPunch);
-        ActionNode Kick = new ActionNode(_enemy.Kick);
-
-        _rouletteNodes.Add(aPunch, 30);
-        _rouletteNodes.Add(bPunch, 35);
-        _rouletteNodes.Add(Kick, 50);
-
-        ActionNode rouletteAction = new ActionNode(RouletteAction);
-
     }
-
     private void CreateDecisionTree()
     {
         ActionNode Follow = new ActionNode(Seek);
@@ -112,15 +103,12 @@ public class EnemyController : MonoBehaviour
         ActionNode Patrol = new ActionNode(Patrolling);
         ActionNode Flee = new ActionNode(Fleeing);
 
-        ActionNode Attack = new ActionNode(_enemy.Attack);
-        //ActionNode APunch = new ActionNode(_enemy.APunch);
-        //ActionNode BPunch = new ActionNode(_enemy.BPunch);
-        //ActionNode Kick = new ActionNode(_enemy.Kick);
+        ActionNode Attack = new ActionNode(AttackFSM);
         ActionNode Block = new ActionNode(_enemy.Block);
 
-        //QuestionNode shouldIAttack = new QuestionNode(() => Vector3.Distance(transform.position, target.position) < _enemy.attackRange, Attack, Follow);
         QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitTime, Wait, Patrol);
-        QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Follow, doIHaveIdle);
+        QuestionNode shouldIAttack = new QuestionNode(_enemy.ShouldIAttack, Attack, Patrol);
+        QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Follow, shouldIAttack);
         QuestionNode doIHaveHealth = new QuestionNode(() => (_enemy.currentHealth / _enemy.maxHealth) <= 0.3f, Flee, doIHaveTarget);
 
         //QuestionNode HowShouldIAttack = new QuestionNode(_enemy.HowShouldIAttack, rouletteAction, kick);
@@ -131,18 +119,26 @@ public class EnemyController : MonoBehaviour
         initialNode = doIHaveHealth;
     }
 
-    public void RouletteAction()
+    private void AttackFSM()
     {
-        Node nodeRoulette = _roulette.Run(_rouletteNodes);
-        nodeRoulette.Execute();
-    }
 
-    private void Attack()
-    {
+        AttackStateEnemy<string> attackStateEnemy = new AttackStateEnemy<string>(_enemy, _enemyAnimations);
+        KickStateEnemy<string> kickStateEnemy = new KickStateEnemy<string>(_enemy, _enemyAnimations);
+        PunchStateEnemy<string> punchStateEnemy = new PunchStateEnemy<string>(_enemy, _enemyAnimations);
+        BlockStateEnemy<string> blockStateEnemy = new BlockStateEnemy<string>(_enemy, _enemyAnimations);
+
+        attackStateEnemy.AddTransition("PunchStateEnemy", punchStateEnemy);
+        punchStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
+        attackStateEnemy.AddTransition("KickStateEnemy", kickStateEnemy);
+        kickStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
+        attackStateEnemy.AddTransition("BlockStateEnemy", blockStateEnemy);
+        blockStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
+
+        _fsm.SetInit(attackStateEnemy);
         //obstacleavoidance.move = false;
         //seek.move = true;
         Debug.Log("Punch anim");
-        _enemyAnimations.APunchAnimation();
+        //_enemyAnimations.APunchAnimation();
         //combat.attack = true;
     }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CnaracterAnimDelegate : MonoBehaviour
+public class CharacterAnimDelegate : MonoBehaviour
 {
 
     public GameObject leftArmCollider, rightArmCollider, leftFootCollider, rightFootCollider;
