@@ -12,7 +12,7 @@ public class Enemy : Entity
     Transform _target;
 
     public float attackRange;
-    float currentAttackTime;
+    float currentAttackTime=0;
     public float defaultAttackTime = 1.2f;
 
     bool attackTarget;
@@ -32,6 +32,10 @@ public class Enemy : Entity
     LayerMask layer;
     //
 
+    Roulette _roulette;
+    Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
+    Node _initNode;
+
     Transform _transform;
 
     private void Start()
@@ -43,6 +47,10 @@ public class Enemy : Entity
         _target = GameObject.FindWithTag(CharacterTags.PLAYER_TAG).transform;
 
         currentAttackTime = defaultAttackTime;
+
+        RouletteWheel();
+
+
     }
 
     public void Move(Vector3 dir)
@@ -60,11 +68,32 @@ public class Enemy : Entity
     {
         currentAttackTime += Time.deltaTime;
 
-        if(currentAttackTime>=defaultAttackTime)
-            _enemyAnim.APunchAnimation();
+        if (currentAttackTime >= defaultAttackTime)
+            RouletteAction();
 
         currentAttackTime = 0;
         Debug.Log("Punch Anim");
+    }
+
+    public void RouletteWheel()
+    {
+        _roulette = new Roulette();
+
+        ActionNode aPunch = new ActionNode(APunch);
+        ActionNode bPunch = new ActionNode(BPunch);
+        ActionNode kick = new ActionNode(Kick);
+
+        _rouletteNodes.Add(aPunch, 30);
+        _rouletteNodes.Add(bPunch, 35);
+        _rouletteNodes.Add(kick, 50);
+
+        ActionNode rouletteAction = new ActionNode(RouletteAction);
+    }
+
+    public void RouletteAction()
+    {
+        Node nodeRoulette = _roulette.Run(_rouletteNodes);
+        nodeRoulette.Execute();
     }
 
     public void GoToWaypoint()
@@ -111,10 +140,17 @@ public class Enemy : Entity
         return attackTarget;
     }
 
+    //public void TakeDamage(Player player, float damage)
+    //{
+    //    Debug.Log("ApplyingDamage");
+    //    player.currentHealth -= damage;
+    //}
+
     public void APunch()
     {
         _enemyAnim.APunchAnimation();
         Debug.Log("Enemy Punch A");
+        //Cuando activo la animación se activan los colliders, por ende ejerce daño
         //Punch code   
     }
 
@@ -149,9 +185,12 @@ public class Enemy : Entity
 
     private void Die()
     {
-        _enemyAnim.DeathAnimation();
-        Destroy(this, 5f);
-        //Animation
+
+        if(currentHealth<=0)
+        {
+            _enemyAnim.DeathAnimation();
+            Destroy(this, 5f);
+        }
 
     }
 

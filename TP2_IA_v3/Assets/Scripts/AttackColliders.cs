@@ -25,11 +25,18 @@ public class AttackColliders : MonoBehaviour
             if (isKick)
             {
                 other.gameObject.GetComponent<Entity>().TakeDamage(attacker.kickDamage);
-                Debug.Log("Kick Damage");
+                Debug.Log(attacker + "Kick Damage");
             }
-            if (isPunch) { other.gameObject.GetComponent<Entity>().TakeDamage(attacker.punchDamage); Debug.Log("Punch Damage");}
+
+            if (isPunch)
+            {
+                other.gameObject.GetComponent<Entity>().TakeDamage(attacker.punchDamage);
+                Debug.Log(attacker + "Punch Damage");
+            }
 
         }
+
+        gameObject.SetActive(false);
 
     }
 

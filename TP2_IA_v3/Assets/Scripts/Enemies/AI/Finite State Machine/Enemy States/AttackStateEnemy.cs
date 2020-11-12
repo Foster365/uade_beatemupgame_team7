@@ -46,9 +46,8 @@ public class AttackStateEnemy<T>:FSMState<T>
     public override void Execute()
     {
         Debug.Log("Enemy AttackState Execute");
-        Node nodeRoulette = _roulette.Run(_rouletteNodes);
-        nodeRoulette.Execute();
-        if(nodeRoulette==aPunch)
+        //RouletteAction();
+        //if(nodeRoulette==aPunch)
 
     }
 
@@ -59,6 +58,8 @@ public class AttackStateEnemy<T>:FSMState<T>
 
     public void RouletteAction()
     {
+        Node nodeRoulette = _roulette.Run(_rouletteNodes);
+        nodeRoulette.Execute();
     }
 
 }
