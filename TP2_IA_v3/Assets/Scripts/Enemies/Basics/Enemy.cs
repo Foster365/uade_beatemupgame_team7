@@ -13,7 +13,7 @@ public class Enemy : Entity
 
     public float attackRange;
     float currentAttackTime;
-    float defaultAttackTime;
+    public float defaultAttackTime = 1.2f;
 
     bool attackTarget;
 
@@ -33,9 +33,6 @@ public class Enemy : Entity
     //
 
     Transform _transform;
-    
-
-   
 
     private void Start()
     {
@@ -61,7 +58,13 @@ public class Enemy : Entity
 
     public void Attack()
     {
+        currentAttackTime += Time.deltaTime;
 
+        if(currentAttackTime>=defaultAttackTime)
+            _enemyAnim.APunchAnimation();
+
+        currentAttackTime = 0;
+        Debug.Log("Punch Anim");
     }
 
     public void GoToWaypoint()
@@ -98,27 +101,34 @@ public class Enemy : Entity
 
     public bool ShouldIAttack()
     {
-        if (Vector3.Distance(transform.position, _target.position) >= attackRange)
-            return false;
-        return true;
+        if (Vector3.Distance(transform.position, _target.position) < attackRange)
+            attackTarget = true;
+        else
+            attackTarget = false;
 
+        Debug.Log("Attack" + attackTarget);
+
+        return attackTarget;
     }
 
     public void APunch()
     {
         _enemyAnim.APunchAnimation();
+        Debug.Log("Enemy Punch A");
         //Punch code   
     }
 
     public void BPunch()
     {
         _enemyAnim.BPunchAnimation();
+        Debug.Log("Enemy Punch B");
         //Punch code   
     }
 
     public void Kick()
     {
         _enemyAnim.KickAnimation();
+        Debug.Log("Enemy Kick");
         //Kick code
     }
 
@@ -137,8 +147,12 @@ public class Enemy : Entity
         _enemyAnim.IdleAnimation();
     }
 
-    public void Die()
+    private void Die()
     {
         _enemyAnim.DeathAnimation();
+        Destroy(this, 5f);
+        //Animation
+
     }
+
 }

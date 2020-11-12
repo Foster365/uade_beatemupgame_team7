@@ -22,6 +22,21 @@ public class CharacterTags
 {
 
     public const string ENEMY_TAG = "Enemy";
-    public const string PLAYER_TAG = "Player";          
-    
+    public const string PLAYER_TAG = "Player";
+
+    public const string LEFT_ARM_TAG = "LeftArm";
+    public const string RIGHT_ARM_TAG = "RightArm";
+    public const string LEFT_FOOT_TAG = "LeftFoot";
+    public const string RIGHT_FOOT_TAG = "RightFoot";
+
+}
+
+public class UtilitiesTags
+{
+
+    public const string GROUND_TAG = "Ground";
+    public const string MAIN_CAMERA_TAG = "MainCamera";
+    public const string HEALTH_UI_TAG = "HealthUI";
+    public const string UNTAGGED_TAG = "Untagged";
+
 }
