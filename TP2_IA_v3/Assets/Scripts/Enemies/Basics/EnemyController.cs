@@ -96,6 +96,7 @@ public class EnemyController : MonoBehaviour
     {
 
     }
+
     private void CreateDecisionTree()
     {
         ActionNode Follow = new ActionNode(Seek);
@@ -121,11 +122,11 @@ public class EnemyController : MonoBehaviour
 
     private void AttackFSM()
     {
-
-        AttackStateEnemy<string> attackStateEnemy = new AttackStateEnemy<string>(_enemy, _enemyAnimations);
         KickStateEnemy<string> kickStateEnemy = new KickStateEnemy<string>(_enemy, _enemyAnimations);
         PunchStateEnemy<string> punchStateEnemy = new PunchStateEnemy<string>(_enemy, _enemyAnimations);
         BlockStateEnemy<string> blockStateEnemy = new BlockStateEnemy<string>(_enemy, _enemyAnimations);
+        AttackStateEnemy<string> attackStateEnemy = new AttackStateEnemy<string>(_enemy, _enemyAnimations, _fsm, "PunchStateEnemy", "KickStateEnemy");
+
 
         attackStateEnemy.AddTransition("PunchStateEnemy", punchStateEnemy);
         punchStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
@@ -137,7 +138,7 @@ public class EnemyController : MonoBehaviour
         _fsm.SetInit(attackStateEnemy);
         //obstacleavoidance.move = false;
         //seek.move = true;
-        Debug.Log("Punch anim");
+
         //_enemyAnimations.APunchAnimation();
         //combat.attack = true;
     }

@@ -11,9 +11,18 @@ public class AttackStateEnemy<T>:FSMState<T>
     Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
     Node _initNode;
 
-    public AttackStateEnemy(Enemy enemy, EnemyAnimations enemyAnimations)
+    FSM<T> _fsm;
+    T _punchState;
+    T _kickState;
+
+    public AttackStateEnemy(Enemy enemy, EnemyAnimations enemyAnimations, FSM<T> fsm, T punchState, T kickState)
     {
         _enemy=enemy;
+
+        _fsm = fsm;
+        _punchState = punchState;
+        _kickState = kickState;
+
     }
 
     public override void Awake()
@@ -37,7 +46,10 @@ public class AttackStateEnemy<T>:FSMState<T>
     public override void Execute()
     {
         Debug.Log("Enemy AttackState Execute");
-        RouletteAction();
+        Node nodeRoulette = _roulette.Run(_rouletteNodes);
+        nodeRoulette.Execute();
+        if(nodeRoulette==aPunch)
+
     }
 
     public override void Sleep()
@@ -47,8 +59,6 @@ public class AttackStateEnemy<T>:FSMState<T>
 
     public void RouletteAction()
     {
-        Node nodeRoulette = _roulette.Run(_rouletteNodes);
-        nodeRoulette.Execute();
     }
 
 }
