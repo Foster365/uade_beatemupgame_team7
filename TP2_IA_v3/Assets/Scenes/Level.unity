@@ -934,6 +934,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.789292, y: 0.6571363, z: 1.8033988}
   m_Center: {x: -0.04631126, y: 0.15984592, z: -0.021544904}
+--- !u!54 &97141067 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 4887451568990162534, guid: 9e80758e2ce23ec40a0e6b57c3917608,
+    type: 3}
+  m_PrefabInstance: {fileID: 8344187805280506578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &99238976
 GameObject:
   m_ObjectHideFlags: 0
@@ -41411,6 +41417,11 @@ PrefabInstance:
       propertyPath: defaultAttackTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 710353499781348898, guid: 9e80758e2ce23ec40a0e6b57c3917608,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 97141067}
     - target: {fileID: 2459539158743496388, guid: 9e80758e2ce23ec40a0e6b57c3917608,
         type: 3}
       propertyPath: m_LocalPosition.x
