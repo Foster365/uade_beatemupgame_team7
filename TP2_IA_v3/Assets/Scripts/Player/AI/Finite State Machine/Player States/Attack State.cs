@@ -108,7 +108,7 @@ public class AttackState<T>: FSMState<T>
     {
         if (activateTimerToReset)
         {
-            Debug.Log("Reset entered");
+            //Debug.Log("Reset entered");
             current_Combo_Timer -= Time.deltaTime;
 
             if (current_Combo_Timer <= 0f)

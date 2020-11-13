@@ -5001,8 +5001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  targetTag: 
-  isKick: 0
+  isKick: 1
   isPunch: 0
   hitFX: {fileID: 0}
 --- !u!1 &339762376
@@ -6499,7 +6498,7 @@ MonoBehaviour:
   kickDamage: 10
   punchDamage: 5
   rb: {fileID: 0}
-  speed: 10
+  speed: 5
   powerJump: 0
   dead: 0
 --- !u!1 &419571606
@@ -9757,54 +9756,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.789292, y: 0.6571363, z: 1.8033988}
   m_Center: {x: -0.04631126, y: 0.15984592, z: -0.021544904}
---- !u!1 &640327186
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 640327187}
-  - component: {fileID: 640327188}
-  m_Layer: 8
-  m_Name: Player RT Coll
-  m_TagString: RightFoot
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &640327187
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640327186}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1487646547}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &640327188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640327186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 826fa28ea0bb8d44aa367100cf278916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attacker: {fileID: 0}
-  targetTag: 
-  isKick: 0
-  isPunch: 0
-  hitFX: {fileID: 0}
 --- !u!1 &646353445
 GameObject:
   m_ObjectHideFlags: 0
@@ -10023,9 +9974,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  targetTag: 
   isKick: 0
-  isPunch: 0
+  isPunch: 1
   hitFX: {fileID: 0}
 --- !u!1 &661466329
 GameObject:
@@ -11798,54 +11748,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.789292, y: 0.6571363, z: 1.8033988}
   m_Center: {x: -0.04631126, y: 0.15984592, z: -0.021544904}
---- !u!1 &732092969
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 732092970}
-  - component: {fileID: 732092971}
-  m_Layer: 8
-  m_Name: Player LT Coll
-  m_TagString: LeftFoot
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &732092970
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732092969}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1487646548}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &732092971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732092969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 826fa28ea0bb8d44aa367100cf278916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attacker: {fileID: 0}
-  targetTag: 
-  isKick: 0
-  isPunch: 0
-  hitFX: {fileID: 0}
 --- !u!1 &735162831
 GameObject:
   m_ObjectHideFlags: 0
@@ -13994,9 +13896,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  targetTag: 
   isKick: 0
-  isPunch: 0
+  isPunch: 1
   hitFX: {fileID: 0}
 --- !u!1 &849718926
 GameObject:
@@ -15392,54 +15293,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.789292, y: 0.6571363, z: 1.8033988}
   m_Center: {x: -0.04631126, y: 0.15984592, z: -0.021544904}
---- !u!1 &933205673
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 933205674}
-  - component: {fileID: 933205675}
-  m_Layer: 8
-  m_Name: Player RH Coll
-  m_TagString: RightArm
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &933205674
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933205673}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.155, y: 0.018, z: -0.046}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1487646546}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &933205675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933205673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 826fa28ea0bb8d44aa367100cf278916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attacker: {fileID: 0}
-  targetTag: 
-  isKick: 0
-  isPunch: 0
-  hitFX: {fileID: 0}
 --- !u!1 &940177703
 GameObject:
   m_ObjectHideFlags: 0
@@ -20561,54 +20414,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.789292, y: 0.6571363, z: 1.8033988}
   m_Center: {x: -0.04631126, y: 0.15984592, z: -0.021544904}
---- !u!1 &1217593826
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1217593827}
-  - component: {fileID: 1217593828}
-  m_Layer: 8
-  m_Name: Player LH Coll
-  m_TagString: LeftArm
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1217593827
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217593826}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.185, y: 0.012, z: 0.054}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1487646545}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1217593828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217593826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 826fa28ea0bb8d44aa367100cf278916, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attacker: {fileID: 0}
-  targetTag: 
-  isKick: 0
-  isPunch: 0
-  hitFX: {fileID: 0}
 --- !u!1 &1217615422
 GameObject:
   m_ObjectHideFlags: 0
@@ -24841,30 +24646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719805fd4d1ce484b9f3c2b280f8dd9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1487646545 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400042, guid: 68ff77d4e131db34586dc6f268e92dca,
-    type: 3}
-  m_PrefabInstance: {fileID: 1487646542}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1487646546 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400092, guid: 68ff77d4e131db34586dc6f268e92dca,
-    type: 3}
-  m_PrefabInstance: {fileID: 1487646542}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1487646547 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400096, guid: 68ff77d4e131db34586dc6f268e92dca,
-    type: 3}
-  m_PrefabInstance: {fileID: 1487646542}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1487646548 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400046, guid: 68ff77d4e131db34586dc6f268e92dca,
-    type: 3}
-  m_PrefabInstance: {fileID: 1487646542}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1487646549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24877,10 +24658,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1f342bae3eb4640b507ca5fd2b6ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftArmCollider: {fileID: 1217593826}
-  rightArmCollider: {fileID: 933205673}
-  leftFootCollider: {fileID: 732092969}
-  rightFootCollider: {fileID: 640327186}
+  leftArmCollider: {fileID: 842979600}
+  rightArmCollider: {fileID: 658989907}
+  leftFootCollider: {fileID: 1684766757}
+  rightFootCollider: {fileID: 1684766757}
 --- !u!1 &1491803016
 GameObject:
   m_ObjectHideFlags: 0
@@ -28792,8 +28573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  targetTag: 
-  isKick: 0
+  isKick: 1
   isPunch: 0
   hitFX: {fileID: 0}
 --- !u!1 &1692804461

@@ -44,7 +44,7 @@ public class AgentAStar : MonoBehaviour
                 var dir = (newPos - curr);
                 if (Physics.Raycast(curr, dir.normalized, dir.magnitude, mask)) continue;
                 list.Add(newPos);
-                Debug.Log(list.Count);
+                //Debug.Log(list.Count);
             }
         }
         return list;

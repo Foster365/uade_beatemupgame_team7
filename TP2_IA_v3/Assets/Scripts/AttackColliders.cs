@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackColliders : MonoBehaviour
 {
     public Entity attacker;
-    public string targetTag;
+    //public string targetTag;
     public bool isKick;
     public bool isPunch;
 
