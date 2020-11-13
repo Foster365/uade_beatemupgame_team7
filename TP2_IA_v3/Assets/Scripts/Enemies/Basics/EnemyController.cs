@@ -75,34 +75,13 @@ public class EnemyController : MonoBehaviour
         _fsm.OnUpdate();
     }
 
-    //private void RouletteWheel()
-    //{
-
-    //    _roulette = new Roulette();
-
-    //    ActionNode aPunch = new ActionNode(_enemy.APunch);
-    //    ActionNode bPunch = new ActionNode(_enemy.BPunch);
-    //    ActionNode Kick = new ActionNode(_enemy.Kick);
-
-    //    _rouletteNodes.Add(aPunch, 30);
-    //    _rouletteNodes.Add(bPunch, 35);
-    //    _rouletteNodes.Add(Kick, 50);
-
-    //    ActionNode rouletteAction = new ActionNode(RouletteAction);
-
-    //}
-
-    public void FSMBuilder()
-    {
-
-    }
-
     private void CreateDecisionTree()
     {
         ActionNode Follow = new ActionNode(Seek);
         ActionNode Wait = new ActionNode(Idle);
         ActionNode Patrol = new ActionNode(Patrolling);
         ActionNode Flee = new ActionNode(Fleeing);
+        ActionNode Die = new ActionNode(_enemy.Die);
 
         ActionNode Attack = new ActionNode(_enemy.Attack);
         ActionNode Block = new ActionNode(_enemy.Block);
@@ -110,12 +89,7 @@ public class EnemyController : MonoBehaviour
         //QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitTime, Wait, Patrol);
         QuestionNode shouldIAttack = new QuestionNode(_enemy.ShouldIAttack, Attack, Patrol);
         QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Follow, shouldIAttack);
-        QuestionNode doIHaveHealth = new QuestionNode(() => (_enemy.currentHealth / _enemy.maxHealth) <= 0.3f, Flee, doIHaveTarget);
-
-        //QuestionNode HowShouldIAttack = new QuestionNode(_enemy.HowShouldIAttack, rouletteAction, kick);
-        //Armar esta parte bien, falta hacer que se relacione como corresponde y
-        //y que llame a los estados que corresponden (Ver si conviene poner las funciones de los actionNodes
-        //en la clase main o si conviene ponerlas en cada estado, hacer una referencia y llamarlos desde ahí)
+        QuestionNode doIHaveHealth = new QuestionNode(() => _enemy.currentHealth >= 0, doIHaveTarget, Die);
 
         initialNode = doIHaveHealth;
     }
@@ -136,11 +110,7 @@ public class EnemyController : MonoBehaviour
         blockStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
 
         _fsm.SetInit(attackStateEnemy);
-        //obstacleavoidance.move = false;
-        //seek.move = true;
 
-        //_enemyAnimations.APunchAnimation();
-        //combat.attack = true;
     }
 
     private void Seek()

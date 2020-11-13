@@ -6,16 +6,47 @@ public class AttackColliders : MonoBehaviour
 {
     public Entity attacker;
     //public string targetTag;
-    public bool isKick;
-    public bool isPunch;
+    public bool isPlayer, isEnemy;
+    public bool isKick, isPunch;
+
+    Enemy _enemy;
+    Player _player;
 
     public GameObject hitFX;
 
-    public void Awake()
+    public void Start()
     {
         attacker = GetComponentInParent<Entity>();
-        
+
     }
+
+    //private void Update()
+    //{
+    //    DetectCollision();
+    //}
+
+    //public void DetectCollision()
+    //{
+    //    Collider[] fightColliders = Physics.OverlapSphere(transform.position, 1, 8);
+
+    //    if (fightColliders.Length >= 0)
+    //    {
+    //        if (isEnemy)
+    //        {
+    //            if (isPunch)
+    //            {
+    //                _enemy.TakeDamage(_enemy.punchDamage);
+    //                Debug.Log("Enemy Punch");
+    //            }
+
+    //            if (isKick)
+    //            {
+    //                _enemy.TakeDamage(_enemy.kickDamage);
+    //                Debug.Log("Enemy Kick");
+    //            }
+    //        }
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -40,5 +71,5 @@ public class AttackColliders : MonoBehaviour
 
     }
 
-   
+
 }

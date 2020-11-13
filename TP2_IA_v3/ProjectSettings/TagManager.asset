@@ -9,6 +9,7 @@ TagManager:
   - LeftFoot
   - RightArm
   - RightFoot
+  - HealthUI
   layers:
   - Default
   - TransparentFX

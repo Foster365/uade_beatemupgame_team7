@@ -17,6 +17,10 @@ public class Enemy : Entity
 
     bool attackTarget;
 
+    //public Player _player;
+    
+    //public AttackColliders _attackCollider;
+
     //Waypoint System (Patrol) variables
     public List<Transform> Waypoints;
     public float distance;
@@ -49,8 +53,9 @@ public class Enemy : Entity
         currentAttackTime = defaultAttackTime;
 
         RouletteWheel();
+        //_player = GetComponent<Player>();
 
-
+        //_attackCollider = GetComponent<AttackColliders>();
     }
 
     public void Move(Vector3 dir)
@@ -72,8 +77,28 @@ public class Enemy : Entity
             RouletteAction();
 
         currentAttackTime = 0;
+
+        //Damage();
         Debug.Log("Punch Anim");
     }
+
+    //public void Damage()
+    //{
+
+    //    if (_attackCollider.isKick)
+    //    {
+    //        TakeDamage(kickDamage);
+    //        Debug.Log(_attackCollider.isKick + "Damage applied");
+    //    }
+
+    //    if (_attackCollider.isPunch)
+    //    {
+    //        TakeDamage(punchDamage);
+    //        Debug.Log(_attackCollider.isPunch + "Damage applied");
+    //    }
+
+
+    //}
 
     public void RouletteWheel()
     {
@@ -92,6 +117,7 @@ public class Enemy : Entity
 
     public void RouletteAction()
     {
+        Debug.Log("Entered in roulette");
         Node nodeRoulette = _roulette.Run(_rouletteNodes);
         nodeRoulette.Execute();
     }
@@ -130,21 +156,9 @@ public class Enemy : Entity
 
     public bool ShouldIAttack()
     {
-        if (Vector3.Distance(transform.position, _target.position) < attackRange)
-            attackTarget = true;
-        else
-            attackTarget = false;
 
-        Debug.Log("Attack" + attackTarget);
-
-        return attackTarget;
+        return attackTarget = (Vector3.Distance(transform.position, _target.transform.position) <= attackRange) ? true : false;
     }
-
-    //public void TakeDamage(Player player, float damage)
-    //{
-    //    Debug.Log("ApplyingDamage");
-    //    player.currentHealth -= damage;
-    //}
 
     public void APunch()
     {
@@ -183,14 +197,11 @@ public class Enemy : Entity
         _enemyAnim.IdleAnimation();
     }
 
-    private void Die()
+    public void Die()
     {
-
         if(currentHealth<=0)
-        {
             _enemyAnim.DeathAnimation();
-            Destroy(this, 5f);
-        }
+        Destroy(gameObject);
 
     }
 

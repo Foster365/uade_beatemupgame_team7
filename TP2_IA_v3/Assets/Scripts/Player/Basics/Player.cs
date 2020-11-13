@@ -8,9 +8,7 @@ public class Player : Entity, IMove
     public float speed;
     public float powerJump;
     public bool dead;
-   
-    
-        
+
     public void Move(Vector3 dir)
     {
         dir.y = 0;

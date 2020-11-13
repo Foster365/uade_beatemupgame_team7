@@ -10,15 +10,26 @@ public class Entity : MonoBehaviour
     public float punchDamage = 5;
     public Rigidbody rb;
 
+    public bool isPlayer;
+
+    private HealthUI healthUIPlayer;
+
     public void Awake()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
 
+        if (isPlayer)
+            healthUIPlayer = GetComponent<HealthUI>();
+
     }
     public void TakeDamage(float dm)
     {
         currentHealth -= dm;
+
+        if (isPlayer)
+            healthUIPlayer.DisplayHealth(currentHealth);
+
         if (currentHealth <= 0f)
         {
             Die();
