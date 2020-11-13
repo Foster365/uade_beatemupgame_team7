@@ -934,12 +934,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.789292, y: 0.6571363, z: 1.8033988}
   m_Center: {x: -0.04631126, y: 0.15984592, z: -0.021544904}
---- !u!54 &97141067 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 4887451568990162534, guid: 9e80758e2ce23ec40a0e6b57c3917608,
-    type: 3}
-  m_PrefabInstance: {fileID: 8344187805280506578}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &99238976
 GameObject:
   m_ObjectHideFlags: 0
@@ -8182,51 +8176,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.789292, y: 0.6571363, z: 1.8033988}
   m_Center: {x: -0.04631126, y: 0.15984592, z: -0.021544904}
---- !u!1 &510875331
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 510875333}
-  - component: {fileID: 510875332}
-  m_Layer: 0
-  m_Name: EnemyInstantiator
-  m_TagString: Untagged
-  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &510875332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510875331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c70cb9f0cc2b2de47963296956fac6c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creationTime: 2
-  creationRange: 2
---- !u!4 &510875333
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510875331}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 2, z: 0.08}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &539599158
 GameObject:
   m_ObjectHideFlags: 0
@@ -41447,29 +41396,6 @@ PrefabInstance:
       propertyPath: Waypoints.Array.data[2]
       value: 
       objectReference: {fileID: 303685679}
-<<<<<<< HEAD
-=======
-    - target: {fileID: 710353499781348898, guid: 9e80758e2ce23ec40a0e6b57c3917608,
-        type: 3}
-      propertyPath: currentHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 710353499781348898, guid: 9e80758e2ce23ec40a0e6b57c3917608,
-        type: 3}
-      propertyPath: attackRange
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 710353499781348898, guid: 9e80758e2ce23ec40a0e6b57c3917608,
-        type: 3}
-      propertyPath: defaultAttackTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 710353499781348898, guid: 9e80758e2ce23ec40a0e6b57c3917608,
-        type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 97141067}
->>>>>>> d4963afd9015e205727b4e615bd00d94a6194859
     - target: {fileID: 2459539158743496388, guid: 9e80758e2ce23ec40a0e6b57c3917608,
         type: 3}
       propertyPath: m_LocalPosition.x

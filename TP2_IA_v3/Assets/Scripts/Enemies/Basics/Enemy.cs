@@ -71,14 +71,14 @@ public class Enemy : Entity
         if (currentAttackTime >= defaultAttackTime)
             RouletteAction();
 
-        Debug.Log("AttackNode");
         currentAttackTime = 0;
+        Debug.Log("Punch Anim");
     }
 
     public void RouletteWheel()
     {
         _roulette = new Roulette();
-        Debug.Log("Entered in Roulette");
+
         ActionNode aPunch = new ActionNode(APunch);
         ActionNode bPunch = new ActionNode(BPunch);
         ActionNode kick = new ActionNode(Kick);
@@ -88,7 +88,6 @@ public class Enemy : Entity
         _rouletteNodes.Add(kick, 50);
 
         ActionNode rouletteAction = new ActionNode(RouletteAction);
-        Debug.Log("RouletteAction is" + rouletteAction);
     }
 
     public void RouletteAction()
