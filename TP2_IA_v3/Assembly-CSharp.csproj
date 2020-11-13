@@ -72,7 +72,10 @@
     <Compile Include="Assets\Scripts\AI\FSM\FSM.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMState.cs" />
     <Compile Include="Assets\Scripts\AI\Line of Sight\LineOfSight.cs" />
+    <Compile Include="Assets\Scripts\AI\Pathfinding\AgentAStar.cs" />
     <Compile Include="Assets\Scripts\AI\Pathfinding\AgentBFSDFS.cs" />
+    <Compile Include="Assets\Scripts\AI\Pathfinding\AStar\AStar.cs" />
+    <Compile Include="Assets\Scripts\AI\Pathfinding\AStar\PriorityQueue.cs" />
     <Compile Include="Assets\Scripts\AI\Pathfinding\BFS\BFS.cs" />
     <Compile Include="Assets\Scripts\AI\Pathfinding\DFS\DFS.cs" />
     <Compile Include="Assets\Scripts\AI\Pathfinding\NodePathfinding.cs" />
