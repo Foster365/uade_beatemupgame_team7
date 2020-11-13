@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flee : SteeringBehaviour
+public class Flee : MonoBehaviour
 {
     public bool move = false;
+    public float speed;
+    public float rotSpeed;
     private LineOfSight sight;
     private Transform target;
+    private Vector3 direction;
 
     public Transform Target { get => target; set => target = value; }
 
@@ -15,8 +18,12 @@ public class Flee : SteeringBehaviour
         sight = GetComponent<LineOfSight>();
     }
 
+    private void Update()
+    {
+        Move();
+    }
 
-    protected override void Move()
+    public void Move()
     {
         Target = sight.Target;
 
@@ -34,4 +41,5 @@ public class Flee : SteeringBehaviour
             transform.position += transform.forward * speed * Time.deltaTime;
         }
     }
+
 }
