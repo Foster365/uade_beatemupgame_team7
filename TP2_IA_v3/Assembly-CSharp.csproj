@@ -82,6 +82,9 @@
     <Compile Include="Assets\Scripts\AI\Roulette Wheel\Roulette.cs" />
     <Compile Include="Assets\Scripts\AI\Steering Behaviours\SteeringBehaviour.cs" />
     <Compile Include="Assets\Scripts\AttackColliders.cs" />
+    <Compile Include="Assets\Scripts\Boss Enemy\Basics\EnemyBoss.cs" />
+    <Compile Include="Assets\Scripts\Boss Enemy\Basics\EnemyBossController.cs" />
+    <Compile Include="Assets\Scripts\Boss Enemy\IA\ISteeringBehaviours.cs" />
     <Compile Include="Assets\Scripts\CharacterAttributes\CharacterAnimDelegate.cs" />
     <Compile Include="Assets\Scripts\CharacterAttributes\CharacterCollider.cs" />
     <Compile Include="Assets\Scripts\CharacterAttributes\TagManager.cs" />
