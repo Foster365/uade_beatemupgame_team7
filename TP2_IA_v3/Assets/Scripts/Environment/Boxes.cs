@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class Boxes : MonoBehaviour
 {
-    Transform player;
+    Transform _player;
     private int ActRange = 2;
     Roulette _roulette;
-    Dictionary<string, int> _dicNodes = new Dictionary<string, int>();
+    Dictionary<GameObject, int> _dicNodes = new Dictionary<GameObject, int>();
+    public GameObject _baseball;
+    public GameObject _star;
+    public GameObject _food;
+    public GameObject _knife;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
         _roulette = new Roulette();
-        _dicNodes.Add("estrella", 100);
-        _dicNodes.Add("comida", 50);
-        _dicNodes.Add("arma", 30);
-        _dicNodes.Add("armadura", 10);
+        _dicNodes.Add(_knife, 50);
+        _dicNodes.Add(_star, 10);
+        _dicNodes.Add(_baseball, 30);
+        _dicNodes.Add(_food, 50);
     }
 
     void Update()
@@ -26,7 +30,7 @@ public class Boxes : MonoBehaviour
 
     private void BreakBox()
     {
-        Vector3 distance = player.position - transform.position;
+        Vector3 distance = _player.position - transform.position;
         if (distance.magnitude < ActRange && Input.GetKeyDown(KeyCode.Q))
         {
             Destroy(gameObject);
@@ -41,7 +45,7 @@ public class Boxes : MonoBehaviour
     }
     void ExecuteRoulette()
     {
-        string item = _roulette.Run(_dicNodes);
-        Debug.Log(item);
+        GameObject item = _roulette.Run(_dicNodes);
+        Instantiate(item, new Vector3(transform.position.x, 1, transform.position.z), Quaternion.identity);
     }
 }
