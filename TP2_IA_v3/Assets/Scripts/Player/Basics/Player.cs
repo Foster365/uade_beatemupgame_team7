@@ -8,6 +8,9 @@ public class Player : Entity, IMove
     public float speed;
     public float powerJump;
     public bool dead;
+    [SerializeField] bool baseballbat;
+    [SerializeField] bool star;
+    [SerializeField] bool knife;
 
     public void Move(Vector3 dir)
     {
