@@ -11,13 +11,20 @@ public class Entity : MonoBehaviour
     public Rigidbody rb;
 
     public bool isPlayer;
+    public float deathTime = 15f;
+    public AudioClip hitFX;
+    public AudioClip deathFX;
 
     private HealthUI healthUIPlayer;
+    public Animator _anim;
+    private bool _isDead = false;
+
 
     public void Awake()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
+        _anim = GetComponent<Animator>();
 
         if (isPlayer)
             healthUIPlayer = GetComponent<HealthUI>();
@@ -26,6 +33,7 @@ public class Entity : MonoBehaviour
     public void TakeDamage(float dm)
     {
         currentHealth -= dm;
+        AudioSource.PlayClipAtPoint(hitFX, transform.position);
 
         if (isPlayer)
             healthUIPlayer.DisplayHealth(currentHealth);
@@ -36,11 +44,19 @@ public class Entity : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
-        Destroy(this, 5f);
-        //Animation
-       
+        
+        if (!_isDead)
+        {
+            Debug.Log("Se murió");
+            _anim.SetTrigger("Death");
+            AudioSource.PlayClipAtPoint(deathFX, transform.position);
+            Destroy(this.gameObject, deathTime);
+        }
+        
+        _isDead = true;
+
     }
 
 

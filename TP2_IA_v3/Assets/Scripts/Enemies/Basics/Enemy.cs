@@ -197,12 +197,6 @@ public class Enemy : Entity
         _enemyAnim.IdleAnimation();
     }
 
-    public void Die()
-    {
-        if(currentHealth<=0)
-            _enemyAnim.DeathAnimation();
-        Destroy(gameObject);
-
-    }
+   
 
 }
