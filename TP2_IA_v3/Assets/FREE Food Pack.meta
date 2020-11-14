@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:TP2_IA_v3/Assets/FREE Food Pack.meta
 guid: 6868f34fc135ea74fa30fedff2b9d318
+=======
+guid: e52d7b33ec61b274b86a912d89a9c78b
+>>>>>>> 6a361299fd50d38b83ad1f06bf2857d18ee90b2c:TP2_IA_v3/Assets/Scripts/Player/AI/Flocking.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

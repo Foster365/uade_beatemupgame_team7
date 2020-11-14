@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:TP2_IA_v3/Assets/Prefabs/Baseball_Bat.prefab.meta
 guid: b525bca1faa0da540a5fe8457dc83928
 PrefabImporter:
+=======
+guid: 75a78db70bef2a24488d28c360c506ed
+folderAsset: yes
+DefaultImporter:
+>>>>>>> 6a361299fd50d38b83ad1f06bf2857d18ee90b2c:TP2_IA_v3/Assets/3DAssets/Assets Player.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
