@@ -19,7 +19,7 @@ public class Boxes : MonoBehaviour
         _roulette = new Roulette();
         _dicNodes.Add(_knife, 50);
         _dicNodes.Add(_star, 10);
-        _dicNodes.Add(_baseball, 30);
+        _dicNodes.Add(_baseball, 300);
         _dicNodes.Add(_food, 50);
     }
 
