@@ -47,7 +47,11 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        _fsm.OnUpdate();
-        _healthUI.DisplayPlayerHealth(_player.currentHealth);
+        if (!_player.isDead)
+        {
+            _fsm.OnUpdate();
+            _healthUI.DisplayPlayerHealth(_player.currentHealth);
+        }
+       
     }
 }

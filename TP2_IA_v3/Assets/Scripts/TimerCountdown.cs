@@ -27,7 +27,16 @@ public class TimerCountdown : MonoBehaviour
         yield return new WaitForSeconds(1);
         secondsLeft -= 1;
         if (secondsLeft > 59) {
-            textDisplay.GetComponent<Text>().text = "0"+ secondsLeft/60 + ":" + secondsLeft%60;
+
+            if (secondsLeft % 60 > 9)
+            {
+                textDisplay.GetComponent<Text>().text = "0" + secondsLeft / 60 + ":" + secondsLeft % 60;
+            }
+            else
+            {
+                textDisplay.GetComponent<Text>().text = "0" + secondsLeft / 60 + ":0" + secondsLeft % 60;
+            }
+            
         }
         else if (secondsLeft > 10)
         {

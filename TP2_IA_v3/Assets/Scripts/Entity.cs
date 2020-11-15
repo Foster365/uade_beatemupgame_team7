@@ -16,7 +16,7 @@ public class Entity : MonoBehaviour
     public AudioClip deathFX;
 
     public Animator _anim;
-    private bool _isDead = false;
+    public bool isDead = false;
 
 
     public void Awake()
@@ -49,7 +49,7 @@ public class Entity : MonoBehaviour
     public void Die()
     {
         
-        if (!_isDead)
+        if (!isDead)
         {
             Debug.Log("Se murió");
             _anim.SetTrigger("Death");
@@ -57,7 +57,7 @@ public class Entity : MonoBehaviour
             Destroy(this.gameObject, deathTime);
         }
         
-        _isDead = true;
+        isDead = true;
 
     }
 

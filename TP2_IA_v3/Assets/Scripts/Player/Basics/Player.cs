@@ -23,10 +23,14 @@ public class Player : Entity, IMove
 
     public void Move(Vector3 dir)
     {
-        dir.y = 0;
-        rb.velocity = dir * speed;
-        if(dir.x != 0 || dir.z != 0)
-        transform.forward = dir;
+        if (!isDead)
+        {
+            dir.y = 0;
+            rb.velocity = dir * speed;
+            if (dir.x != 0 || dir.z != 0)
+            transform.forward = dir;
+        }
+        
         
         
     }
