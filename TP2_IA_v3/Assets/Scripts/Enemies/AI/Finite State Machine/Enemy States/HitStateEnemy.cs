@@ -14,10 +14,10 @@ public class HitStateEnemy<T> : FSMState<T>
     FSM<T> _fsm;
     T _attackStateEnemy;
     T _idleStateEnemy;
-    T _blockStateEnemy;
+    //T _blockStateEnemy;
 
     public HitStateEnemy(EnemyBoss enemyBoss, EnemyBossAnim enemyBossAnimations, Player target, FSM<T> fsm,
-    T attackStateEnemt, T idleStateEnemy, T blockStateEnemy)
+    T attackStateEnemt, T idleStateEnemy/*, T blockStateEnemy*/)
     {
 
         _enemyBoss = enemyBoss;
@@ -27,7 +27,7 @@ public class HitStateEnemy<T> : FSMState<T>
         _fsm = fsm;
         _attackStateEnemy = attackStateEnemt;
         _idleStateEnemy = idleStateEnemy;
-        _blockStateEnemy = blockStateEnemy;
+        //_blockStateEnemy = blockStateEnemy;
 
     }
 

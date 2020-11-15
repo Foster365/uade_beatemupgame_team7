@@ -15,11 +15,11 @@ public class AttackStateEnemy<T>:FSMState<T>
 
     FSM<T> _fsm;
     T _seekStateEnemy;
-    T _blockStateEnemy;
+    //T _blockStateEnemy;
     T _hitStateEnemy;
     T _dieStateEnemy;
 
-    public AttackStateEnemy(EnemyBoss enemyBoss, EnemyBossAnim enemyBossAnim, Player target, FSM<T> fsm, T seekStateEnemy, T blockStateEnemy,
+    public AttackStateEnemy(EnemyBoss enemyBoss, EnemyBossAnim enemyBossAnim, Player target, FSM<T> fsm, T seekStateEnemy/*, T blockStateEnemy*/,
     T hitStateEnemy, T dieStateEnemy)
     {
         _enemyBoss = enemyBoss;
@@ -28,7 +28,7 @@ public class AttackStateEnemy<T>:FSMState<T>
 
         _fsm = fsm;
         _seekStateEnemy = seekStateEnemy;
-        _blockStateEnemy = blockStateEnemy;
+        //_blockStateEnemy = blockStateEnemy;
         _hitStateEnemy = hitStateEnemy;
         _dieStateEnemy = dieStateEnemy;
     }
@@ -74,11 +74,11 @@ public class AttackStateEnemy<T>:FSMState<T>
 
         ActionNode aPunch = new ActionNode(_enemyBoss.APunch);
         ActionNode bPunch = new ActionNode(_enemyBoss.BPunch);
-        ActionNode Kick = new ActionNode(_enemyBoss.Kick);
+        //ActionNode Kick = new ActionNode(_enemyBoss.Kick);
 
         _rouletteNodes.Add(aPunch, 30);
         _rouletteNodes.Add(bPunch, 35);
-        _rouletteNodes.Add(Kick, 50);
+        //_rouletteNodes.Add(Kick, 50);
 
         ActionNode rouletteAction = new ActionNode(RouletteAction);
 

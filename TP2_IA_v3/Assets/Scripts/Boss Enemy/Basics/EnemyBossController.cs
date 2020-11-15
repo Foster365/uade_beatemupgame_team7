@@ -76,9 +76,9 @@ public class EnemyBossController : MonoBehaviour
         IdleStateEnemy<string> idleStateEnemy = new IdleStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "PatrolStateEnemy", "HitStateEnemy"/*, "BlockStateEnemy"*/, "DieStateEnemy");
         PatrolStateEnemy<string> patrolStateEnemy = new PatrolStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "IdleStateEnemy", "SeekStateEnemy");
         SeekStateEnemy<string> seekStateEnemy = new SeekStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "IdleStateEnemy", "AttackStateEnemy");
-        AttackStateEnemy<string> attackStateEnemy = new AttackStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "SeekStateEnemy", "BlockStateEnemy", "HitStateEnemy", "DieStateEnemy");
-        BlockStateEnemy<string> blockStateEnemy = new BlockStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "IdleStateEnemy", "AttackStateEnemy");
-        HitStateEnemy<string> hitStateEnemy = new HitStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "AttackStateEnemy", "IdleStateEnemy", "BlockStateEnemy");
+        AttackStateEnemy<string> attackStateEnemy = new AttackStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "SeekStateEnemy"/*, "BlockStateEnemy"*/, "HitStateEnemy", "DieStateEnemy");
+        //BlockStateEnemy<string> blockStateEnemy = new BlockStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "IdleStateEnemy", "AttackStateEnemy");
+        HitStateEnemy<string> hitStateEnemy = new HitStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "AttackStateEnemy", "IdleStateEnemy"/*, "BlockStateEnemy"*/);
         DieStateEnemy<string> dieStateEnemy = new DieStateEnemy<string>(_enemyBossAnim);
 
         idleStateEnemy.AddTransition("PatrolStateEnemy", patrolStateEnemy);
@@ -89,15 +89,15 @@ public class EnemyBossController : MonoBehaviour
 
         seekStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
         attackStateEnemy.AddTransition("SeekStateEnemy", seekStateEnemy);
-        attackStateEnemy.AddTransition("BlockStateEnemy", blockStateEnemy);
+        //attackStateEnemy.AddTransition("BlockStateEnemy", blockStateEnemy);
 
         //blockStateEnemy.AddTransition("IdleStateEnemy", idleStateEnemy);
-        blockStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
+        //blockStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
 
         idleStateEnemy.AddTransition("HitStateEnemy", hitStateEnemy);
         hitStateEnemy.AddTransition("IdleStateEnemy", idleStateEnemy);
         //hitStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
-        hitStateEnemy.AddTransition("BlockStateEnemy", blockStateEnemy);
+        //hitStateEnemy.AddTransition("BlockStateEnemy", blockStateEnemy);
 
         attackStateEnemy.AddTransition("DieStateEnemy", dieStateEnemy);
         idleStateEnemy.AddTransition("DieStateEnemy", dieStateEnemy);
