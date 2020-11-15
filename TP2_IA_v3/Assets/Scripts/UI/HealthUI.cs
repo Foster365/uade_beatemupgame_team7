@@ -26,7 +26,7 @@ public class HealthUI : MonoBehaviour
 
     public void DisplayBossHealth(float value)
     {
-        value /= 100f;
+        value /= 300f;
         if (value < 0f)
             value = 0f;
 
