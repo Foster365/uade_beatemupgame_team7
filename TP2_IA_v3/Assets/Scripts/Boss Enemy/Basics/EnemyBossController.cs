@@ -37,6 +37,8 @@ public class EnemyBossController : MonoBehaviour
     private Node initialNode;
     //LineOfSight sight;
 
+    HealthUI _bossHealthUI;
+
     [SerializeField]
     EnemyBoss _enemyBoss;
     [SerializeField]
@@ -48,6 +50,8 @@ public class EnemyBossController : MonoBehaviour
         //_enemyBoss = GameObject.FindGameObjectWithTag(CharacterTags.BOSSENEMY_TAG).gameObject;
         _enemyBossAnim = gameObject.GetComponent<EnemyBossAnim>();
         //_player = GetComponent<Player>();
+
+        _bossHealthUI = gameObject.GetComponentInChildren<HealthUI>();
 
         //sight = gameObject.GetComponent<LineOfSight>();
         //seek = gameObject.GetComponent<Seek>();
@@ -64,6 +68,7 @@ public class EnemyBossController : MonoBehaviour
     private void Update()
     {
         _fsm.OnUpdate();
+        _bossHealthUI.DisplayHealth(_enemyBoss.currentHealth);
     }
 
     private void FSM()

@@ -10,6 +10,8 @@ TagManager:
   - RightArm
   - RightFoot
   - HealthUI
+  - BossEnemy
+  - HealthUIBoss
   layers:
   - Default
   - TransparentFX
