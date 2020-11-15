@@ -46,6 +46,7 @@ public class EnemyBossController : MonoBehaviour
 
     private void Awake()
     {
+        _player = FindObjectOfType<Player>();
         _rigidbody = GetComponent<Rigidbody>();
         //_enemyBoss = GameObject.FindGameObjectWithTag(CharacterTags.BOSSENEMY_TAG).gameObject;
         _enemyBossAnim = gameObject.GetComponent<EnemyBossAnim>();

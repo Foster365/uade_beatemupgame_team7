@@ -26,7 +26,7 @@ public class SeekStateEnemy<T>:FSMState<T>
 
     public override void Awake()
     {
-        Debug.Log("Enemy SeekState Awake");
+       // Debug.Log("Enemy SeekState Awake");
     }
 
     public override void Execute()
@@ -36,7 +36,7 @@ public class SeekStateEnemy<T>:FSMState<T>
 
         //var attackDistance = Vector3.Distance(_enemyBoss.transform.position, _target.transform.position);
         _enemyBoss.Seek();
-        Debug.Log("Enemy SeekState Execute");
+        //Debug.Log("Enemy SeekState Execute");
         if (Vector3.Distance(_enemyBoss.transform.position, _target.transform.position) <= _enemyBoss.attackRange)
         {
             _fsm.Transition(_attackStateEnemy);

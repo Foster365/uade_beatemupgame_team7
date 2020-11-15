@@ -49,7 +49,7 @@ public class PatrolStateEnemy<T>:FSMState<T>
 
     public override void Sleep()
     {
-        Debug.Log("Enemy Patrol State Sleep");
+       // Debug.Log("Enemy Patrol State Sleep");
     }
     
 }
