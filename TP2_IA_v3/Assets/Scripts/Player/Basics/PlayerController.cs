@@ -41,6 +41,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _fsm.OnUpdate();
-        _healthUI.DisplayHealth(_player.currentHealth);
+        _healthUI.DisplayPlayerHealth(_player.currentHealth);
     }
 }

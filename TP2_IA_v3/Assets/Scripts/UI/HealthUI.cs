@@ -7,18 +7,29 @@ public class HealthUI : MonoBehaviour
 {
 
     private Image pjHealthUI;
+    private Image bossHealthUI;
 
     private void Awake()
     {
         pjHealthUI = GameObject.FindWithTag(UtilitiesTags.HEALTH_UI_TAG).GetComponent<Image>();
+        bossHealthUI = GameObject.FindWithTag(UtilitiesTags.BOSS_HEALTH_UI_TAG).GetComponent<Image>();
     }
 
-    public void DisplayHealth(float value)
+    public void DisplayPlayerHealth(float value)
     {
         value /= 100f;
         if(value<0f)
             value=0f;
 
         pjHealthUI.fillAmount = value;
+    }
+
+    public void DisplayBossHealth(float value)
+    {
+        value /= 100f;
+        if (value < 0f)
+            value = 0f;
+
+        bossHealthUI.fillAmount = value;
     }
 }

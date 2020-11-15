@@ -37,6 +37,7 @@ public class UtilitiesTags
     public const string GROUND_TAG = "Ground";
     public const string MAIN_CAMERA_TAG = "MainCamera";
     public const string HEALTH_UI_TAG = "HealthUI";
+    public const string BOSS_HEALTH_UI_TAG = "HealthUIBoss";
     public const string UNTAGGED_TAG = "Untagged";
 
 }

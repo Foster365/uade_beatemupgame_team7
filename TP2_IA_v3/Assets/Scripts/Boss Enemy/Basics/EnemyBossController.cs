@@ -68,7 +68,7 @@ public class EnemyBossController : MonoBehaviour
     private void Update()
     {
         _fsm.OnUpdate();
-        _bossHealthUI.DisplayHealth(_enemyBoss.currentHealth);
+        _bossHealthUI.DisplayBossHealth(_enemyBoss.currentHealth);
     }
 
     private void FSM()
