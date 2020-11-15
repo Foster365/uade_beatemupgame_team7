@@ -9,10 +9,7 @@ public class HitStateEnemy<T> : FSMState<T>
     Player _target;
 
 
-    Roulette _roulette;
-    Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
-    Node _initNode;
-
+    
 
     FSM<T> _fsm;
     T _attackStateEnemy;
@@ -36,28 +33,16 @@ public class HitStateEnemy<T> : FSMState<T>
 
     public override void Awake()
     {
-        Debug.Log("Enemy KickState Awake");
-
-        _roulette = new Roulette();
-
-        ActionNode attack = new ActionNode(Attack);
-        ActionNode idle = new ActionNode(Idle);
-        ActionNode block = new ActionNode(Block);
-
-        _rouletteNodes.Add(attack, 90);
-        _rouletteNodes.Add(idle, 50);
-        _rouletteNodes.Add(block, 40);
-
-        ActionNode rouletteAction = new ActionNode(RouletteAction);
+        
 
 
     }
 
     public override void Execute()
     {
-        Debug.Log("Enemy KickState Execute");
-        _enemyBossAnimations.KickAnimation();
-        RouletteAction();
+        //Debug.Log("Enemy HitState Execute");
+        //_enemyBossAnimations.HitAnimation();
+       
         
     }
 
@@ -66,24 +51,12 @@ public class HitStateEnemy<T> : FSMState<T>
         Debug.Log("Enemy KickState Sleep");        
     }
 
-    void RouletteAction()
-    {
-        Node _nodeRoulette = _roulette.Run(_rouletteNodes);
-        _nodeRoulette.Execute();
-    }
+    
 
     void Attack()
     {
         _fsm.Transition(_attackStateEnemy);
     }
 
-    void Idle()
-    {
-        _fsm.Transition(_idleStateEnemy);
-    }
-
-    void Block()
-    {
-        _fsm.Transition(_blockStateEnemy);
-    }
+    
 }

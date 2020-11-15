@@ -35,6 +35,7 @@ public class Entity : MonoBehaviour
         {
             Die();
         }
+        else { _anim.SetTrigger("Damaged"); }
     }
 
     public void Die()

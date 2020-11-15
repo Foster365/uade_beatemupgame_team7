@@ -35,7 +35,7 @@ public class IdleStateEnemy<T>:FSMState<T>
 
     public override void Awake()
     {
-        Debug.Log("Enemy Idle State Awake");
+       // Debug.Log("Enemy Idle State Awake");
 
     }
 
@@ -43,7 +43,7 @@ public class IdleStateEnemy<T>:FSMState<T>
     {
         counter += Time.deltaTime;
         //bool inSight = _enemyBoss.LineOfSight(_target.transform);
-        Debug.Log("Enemy Idle State Execute");
+      //  Debug.Log("Enemy Idle State Execute");
         //_enemyBossAnimations.IdleAnimation();
         IdleBehaviour();
         if (counter >= maxCounter)/*Vector3.Distance(_enemyBoss.transform.position, _target.transform.position) <= _enemyBoss.attackRange*/
@@ -60,7 +60,7 @@ public class IdleStateEnemy<T>:FSMState<T>
 
     public override void Sleep()
     {
-        Debug.Log("Enemy Idle State Sleep");
+      //  Debug.Log("Enemy Idle State Sleep");
     }
 
     public void IdleBehaviour()

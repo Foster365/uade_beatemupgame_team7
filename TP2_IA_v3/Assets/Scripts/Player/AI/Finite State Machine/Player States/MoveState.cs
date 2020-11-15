@@ -24,7 +24,7 @@ public class MoveState<T> : FSMState<T>
 
     public override void Awake()
     {
-        Debug.Log("MoveState");
+       // Debug.Log("MoveState");
         _anim.Walk(true);
 
     }

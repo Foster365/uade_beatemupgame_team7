@@ -28,18 +28,9 @@ public class Player : Entity, IMove
         if(dir.x != 0 || dir.z != 0)
         transform.forward = dir;
         
-        //Debug.Log(dir);
-        //_playerAnimation.RunAnim(_rb.velocity.magnitude);
+        
     }
-    //public void TakeDamage(float damage)
-    //{
-    //    CurrentHealth -= damage;
-
-    //    if (CurrentHealth <= 0f)
-    //    {
-    //        Die();
-    //    }
-    //}
+   
     public void ChangePowerUp(PowerUps powerUps)
     {
         _currentPU = powerUps;

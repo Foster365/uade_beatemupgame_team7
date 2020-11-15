@@ -44,6 +44,7 @@ public class Enemy : Entity
 
     private void Start()
     {
+
         _transform = GetComponent<Transform>();
         _enemyAnim = GetComponent<EnemyAnimations>();
         
@@ -71,15 +72,19 @@ public class Enemy : Entity
 
     public void Attack()
     {
-        currentAttackTime += Time.deltaTime;
+       currentAttackTime += Time.deltaTime;
 
         if (currentAttackTime >= defaultAttackTime)
+        {
             RouletteAction();
+            currentAttackTime = 0;
+        }
+            
 
-        currentAttackTime = 0;
+        
 
         //Damage();
-        Debug.Log("Punch Anim");
+       // Debug.Log("Punch Anim");
     }
 
     //public void Damage()

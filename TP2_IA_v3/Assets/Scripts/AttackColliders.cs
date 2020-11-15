@@ -6,7 +6,7 @@ public class AttackColliders : MonoBehaviour
 {
     public Entity attacker;
     //public string targetTag;
-    public bool isPlayer, isEnemy;
+   // public bool isPlayer, isEnemy;
     public bool isKick, isPunch;
 
     Enemy _enemy;
@@ -50,19 +50,19 @@ public class AttackColliders : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Attack Trigger");
+       // Debug.Log("Attack Trigger");
         if (other.gameObject.GetComponent<Entity>())
         {
             if (isKick)
             {
                 other.gameObject.GetComponent<Entity>().TakeDamage(attacker.kickDamage);
-                Debug.Log(attacker + "Kick Damage");
+                //Debug.Log(attacker + "Kick Damage");
             }
 
             if (isPunch)
             {
                 other.gameObject.GetComponent<Entity>().TakeDamage(attacker.punchDamage);
-                Debug.Log(attacker + "Punch Damage");
+                //Debug.Log(attacker + "Punch Damage");
             }
 
         }

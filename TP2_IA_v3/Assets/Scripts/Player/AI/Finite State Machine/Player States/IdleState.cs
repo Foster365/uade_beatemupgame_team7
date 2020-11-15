@@ -31,7 +31,7 @@ public class IdleState<T> : FSMState<T>
     }
     public override void Awake()
     {
-        Debug.Log("IdleState");
+       // Debug.Log("IdleState");
         _anim.Walk(false);
     }
     public override void Sleep()

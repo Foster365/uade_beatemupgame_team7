@@ -26,7 +26,7 @@ public class AttackState<T>: FSMState<T>
 
     public override void Awake()
     {
-        Debug.Log("AttackState");
+       // Debug.Log("AttackState");
         _anim.Walk(false);
         
         current_Combo_Timer = default_Combo_Timer;

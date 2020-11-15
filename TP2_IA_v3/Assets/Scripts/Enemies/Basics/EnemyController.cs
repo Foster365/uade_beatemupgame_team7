@@ -81,8 +81,8 @@ public class EnemyController : MonoBehaviour
         ActionNode Block = new ActionNode(_enemy.Block);
 
         //QuestionNode doIHaveIdle = new QuestionNode(() => timer >= waitTime, Wait, Patrol);
-        QuestionNode shouldIAttack = new QuestionNode(_enemy.ShouldIAttack, Attack, Patrol);
-        QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, Follow, shouldIAttack);
+        QuestionNode shouldIAttack = new QuestionNode(_enemy.ShouldIAttack, Attack, Follow);
+        QuestionNode doIHaveTarget = new QuestionNode(() => sight.targetInSight, shouldIAttack, Patrol);
         QuestionNode doIHaveHealth = new QuestionNode(() => _enemy.currentHealth >= 0, doIHaveTarget, Die);
 
         initialNode = doIHaveHealth;

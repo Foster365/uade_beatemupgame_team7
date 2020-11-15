@@ -69,7 +69,7 @@ public class AttackStateEnemy<T>:FSMState<T>
 
     public void CreateRoulette()
     {
-
+        Debug.Log("Ruleta Enemy Creada");
         _roulette = new Roulette();
 
         ActionNode aPunch = new ActionNode(_enemyBoss.APunch);

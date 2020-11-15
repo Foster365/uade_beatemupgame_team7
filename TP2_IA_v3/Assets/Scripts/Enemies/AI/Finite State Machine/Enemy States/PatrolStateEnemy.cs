@@ -26,7 +26,7 @@ public class PatrolStateEnemy<T>:FSMState<T>
     
     public override void Awake()
     {
-        Debug.Log("Enemy Patrol State Awake");
+       // Debug.Log("Enemy Patrol State Awake");
 
     }
     public override void Execute()
@@ -37,11 +37,11 @@ public class PatrolStateEnemy<T>:FSMState<T>
             _fsm.Transition(_seekStateEnemy);
             Debug.Log("Sight");
         }
-        else if(!_enemyBoss.Line_Of_Sight.targetInSight)
-            Debug.Log("Not in sight");
+      //  else if(!_enemyBoss.Line_Of_Sight.targetInSight)
+           // Debug.Log("Not in sight");
         //_enemyBoss.GoToWaypoint();
         //_enemyBossAnimations.MoveAnimation(true);
-        Debug.Log("Enemy Patrol State Execute");
+      //  Debug.Log("Enemy Patrol State Execute");
         //_enemyBoss.GoToWaypoint();
         //_enemyBossAnimations.MoveAnimation(true);
         //Poner iteraciones. Valor de enemycontroller que vaya disminuyendo
