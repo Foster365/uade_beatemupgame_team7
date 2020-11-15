@@ -33,7 +33,7 @@ public class CharacterAnimDelegate : MonoBehaviour
     {
        
         leftFootCollider.SetActive(true);
-        Debug.Log("Left Foot On");
+      //  Debug.Log("Left Foot On");
     }
 
     void LeftFootAttackOff()
@@ -55,7 +55,7 @@ public class CharacterAnimDelegate : MonoBehaviour
     {
         if (rightFootCollider.activeInHierarchy)
         {
-            Debug.Log("Right Foot Off");
+            //Debug.Log("Right Foot Off");
             rightFootCollider.SetActive(false);
         }
            

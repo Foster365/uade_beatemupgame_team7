@@ -122,7 +122,7 @@ public class Enemy : Entity
 
     public void RouletteAction()
     {
-        Debug.Log("Entered in roulette");
+       // Debug.Log("Entered in roulette");
         Node nodeRoulette = _roulette.Run(_rouletteNodes);
         nodeRoulette.Execute();
     }
@@ -168,7 +168,7 @@ public class Enemy : Entity
     public void APunch()
     {
         _enemyAnim.APunchAnimation();
-        Debug.Log("Enemy Punch A");
+      //  Debug.Log("Enemy Punch A");
         //Cuando activo la animación se activan los colliders, por ende ejerce daño
         //Punch code   
     }
@@ -176,14 +176,14 @@ public class Enemy : Entity
     public void BPunch()
     {
         _enemyAnim.BPunchAnimation();
-        Debug.Log("Enemy Punch B");
+       // Debug.Log("Enemy Punch B");
         //Punch code   
     }
 
     public void Kick()
     {
         _enemyAnim.KickAnimation();
-        Debug.Log("Enemy Kick");
+       // Debug.Log("Enemy Kick");
         //Kick code
     }
 

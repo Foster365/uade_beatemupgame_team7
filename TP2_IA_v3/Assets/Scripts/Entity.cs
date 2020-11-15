@@ -23,7 +23,15 @@ public class Entity : MonoBehaviour
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
-        _anim = GetComponent<Animator>();
+        if (isPlayer) //Tuve que hardcodear para no complicar la solución
+        {
+            _anim = GetComponentInChildren<Animator>();
+        }
+        else
+        {
+            _anim = GetComponent<Animator>();
+        }
+        
 
     }
     public void TakeDamage(float dm)
