@@ -26,18 +26,24 @@ public class CharacterAnimDelegate : MonoBehaviour
     void RightArmAttackOff()
     {
         if (rightArmCollider.activeInHierarchy)
-            leftArmCollider.SetActive(false);
+            rightArmCollider.SetActive(false);
     }
 
     void LeftFootAttackOn()
     {
+       
         leftFootCollider.SetActive(true);
+        Debug.Log("Left Foot On");
     }
 
     void LeftFootAttackOff()
     {
         if (leftFootCollider.activeInHierarchy)
+        {
+            Debug.Log("Left Foot Off");
             leftFootCollider.SetActive(false);
+        }
+            
     }
 
     void RightFootAttackOn()
@@ -48,27 +54,31 @@ public class CharacterAnimDelegate : MonoBehaviour
     void RightFootAttackOff()
     {
         if (rightFootCollider.activeInHierarchy)
+        {
+            Debug.Log("Right Foot Off");
             rightFootCollider.SetActive(false);
+        }
+           
     }
 
-    void TagLeftArm()
-    {
-        leftArmCollider.tag = CharacterTags.LEFT_ARM_TAG;
-    }
+    //void TagLeftArm()
+    //{
+    //    leftArmCollider.tag = CharacterTags.LEFT_ARM_TAG;
+    //}
 
-    void UntagLeftArm()
-    {
-        leftArmCollider.tag = UtilitiesTags.UNTAGGED_TAG;
-    }
+    //void UntagLeftArm()
+    //{
+    //    leftArmCollider.tag = UtilitiesTags.UNTAGGED_TAG;
+    //}
 
-    void TagLeftFoot()
-    {
-        leftFootCollider.tag = CharacterTags.LEFT_FOOT_TAG;
-    }
+    //void TagLeftFoot()
+    //{
+    //    leftFootCollider.tag = CharacterTags.LEFT_FOOT_TAG;
+    //}
 
-    void UntagLeftFoot()
-    {
-        leftFootCollider.tag = UtilitiesTags.UNTAGGED_TAG;
-    }
+    //void UntagLeftFoot()
+    //{
+    //    leftFootCollider.tag = UtilitiesTags.UNTAGGED_TAG;
+    //}
 
 }

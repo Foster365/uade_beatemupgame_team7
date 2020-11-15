@@ -114,10 +114,11 @@
     <Compile Include="Assets\Scripts\Environment\Star.cs" />
     <Compile Include="Assets\Scripts\Environment\Waypoint.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\Attack State.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\IdleState.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\JumpState.cs" />
+    <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\Kick Attack State.cs" />
     <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\MoveState.cs" />
+    <Compile Include="Assets\Scripts\Player\AI\Finite State Machine\Player States\Punch Attack State.cs" />
     <Compile Include="Assets\Scripts\Player\Basics\BufforNot.cs" />
     <Compile Include="Assets\Scripts\Player\Basics\IMove.cs" />
     <Compile Include="Assets\Scripts\Player\Basics\Player.cs" />
