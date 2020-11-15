@@ -41,9 +41,9 @@ public class HitStateEnemy<T> : FSMState<T>
     public override void Execute()
     {
         //Debug.Log("Enemy HitState Execute");
-        //_enemyBossAnimations.HitAnimation();
-       
-        
+        _enemyBossAnimations.DamageAnimation();
+
+
     }
 
     public override void Sleep()
@@ -51,12 +51,4 @@ public class HitStateEnemy<T> : FSMState<T>
         Debug.Log("Enemy KickState Sleep");        
     }
 
-    
-
-    void Attack()
-    {
-        _fsm.Transition(_attackStateEnemy);
-    }
-
-    
 }
