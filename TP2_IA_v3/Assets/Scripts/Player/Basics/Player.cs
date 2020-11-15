@@ -46,40 +46,40 @@ public class Player : Entity, IMove
     }
     private void Update()
     {
-        switch (_currentPU)
-        {
-            case PowerUps.BaseballBat:
-                punchDamage += 10;
-                float time = 5;
-                time -= Time.deltaTime;
-                if (time <= 0)
-                {
-                    ChangePowerUp(PowerUps.None);
-                }
-                break;
+        //switch (_currentPU)
+        //{
+        //    case PowerUps.BaseballBat:
+        //        punchDamage += 10;
+        //        float time = 5;
+        //        time -= Time.deltaTime;
+        //        if (time <= 0)
+        //        {
+        //            ChangePowerUp(PowerUps.None);
+        //        }
+        //        break;
 
-            case PowerUps.Knife:
-                punchDamage += 5;
-                time = 5;
-                time -= Time.deltaTime;
-                if (time <= 0)
-                {
-                    ChangePowerUp(PowerUps.None);
-                }
-                break;
+        //    case PowerUps.Knife:
+        //        punchDamage += 5;
+        //        time = 5;
+        //        time -= Time.deltaTime;
+        //        if (time <= 0)
+        //        {
+        //            ChangePowerUp(PowerUps.None);
+        //        }
+        //        break;
 
-            case PowerUps.Star:
-                time = 5;
-                time -= Time.deltaTime;
-                if (time <= 0)
-                {
-                    ChangePowerUp(PowerUps.None);
-                }
-                break;
+        //    case PowerUps.Star:
+        //        time = 5;
+        //        time -= Time.deltaTime;
+        //        if (time <= 0)
+        //        {
+        //            ChangePowerUp(PowerUps.None);
+        //        }
+        //        break;
 
-            case PowerUps.None:
-                break;
-        }
+        //    case PowerUps.None:
+        //        break;
+        //}
     }
 
     public void Jump()
