@@ -9,8 +9,18 @@ public class EnemyBoss : Entity, IMove
     public float movementSpeed;
     bool _isMoving;
 
-    EnemyAnimations _bossEnemyAnim;
+    EnemyBossAnim _bossEnemyAnim;
     Transform _target;
+
+    ////
+    //[SerializeField]
+    //float sbR;
+
+    //[SerializeField]
+    //float angle;
+
+    //[SerializeField]
+    //LayerMask layer;
 
     public float attackRange;
     float currentAttackTime = 0;
@@ -18,16 +28,11 @@ public class EnemyBoss : Entity, IMove
 
     bool attackTarget;
 
-    //Waypoint System (Patrol) variables
-    //public List<Transform> Waypoints;
-    //public float distance;
-    //int _nextWp = 0;
-    //int _indexModifier = 1;
-    //
-
-    //Line of Sight Variables
-    [SerializeField]
-    float LOSRadius, angle;
+    //Waypoint System(Patrol) variables
+    public List<Transform> Waypoints;
+    public float distance;
+    int _nextWp = 0;
+    int _indexModifier = 1;
 
     [SerializeField]
     LayerMask layer;
@@ -37,22 +42,45 @@ public class EnemyBoss : Entity, IMove
     Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
     Node _initNode;
 
-    Transform _transform;
+    //Transform _transform;
+    [SerializeField]
+    Seek seekBehaviour;
+    [SerializeField]
+    ObstacleAvoidance obsAvoidanceBehaviour;
+    [SerializeField]
+    LineOfSight lineOfSight;
+
+    //public Seek SeekBehaviour { get => seekBehaviour; set => seekBehaviour = gameObject.GetComponent<Seek>(); }
+    //public ObstacleAvoidance ObsAvoidanceBehaviour { get => obsAvoidanceBehaviour; set => obsAvoidanceBehaviour = gameObject.GetComponent<ObstacleAvoidance>(); }
+    public LineOfSight Line_Of_Sight { get => lineOfSight; }
+
+    //Seek Behaviour
+    float _idleTimer;
+    [SerializeField]
+    float _idleCountdown;
+    //
 
     private void Start()
     {
-        _transform = GetComponent<Transform>();
-        _bossEnemyAnim = GetComponent<EnemyAnimations>();
-
+        //_transform = GetComponent<Transform>();
+        _bossEnemyAnim = GetComponent<EnemyBossAnim>();
 
         _target = GameObject.FindWithTag(CharacterTags.PLAYER_TAG).transform;
+
+        //seekBehaviour = GetComponent<Seek>();
+        //obsAvoidanceBehaviour = GetComponent<ObstacleAvoidance>();
+        //lineOfSight = GetComponent<LineOfSight>();
 
         currentAttackTime = defaultAttackTime;
 
         RouletteWheel();
+
+        _idleTimer = 0;
         //_player = GetComponent<Player>();
 
         //_attackCollider = GetComponent<AttackColliders>();
+
+
     }
 
     public void Move(Vector3 dir)
@@ -61,7 +89,6 @@ public class EnemyBoss : Entity, IMove
         dir.y = 0;
         rb.velocity = dir * movementSpeed;
         transform.forward = Vector3.Lerp(transform.forward, dir, 0.2f);
-        // _enemyAnimation.RunAnimation();
         _isMoving = true;
 
     }
@@ -102,76 +129,102 @@ public class EnemyBoss : Entity, IMove
         nodeRoulette.Execute();
     }
 
-    //public void GoToWaypoint()
-    //{
-
-    //    var waypoint = Waypoints[_nextWp];
-    //    var waypointPosition = waypoint.position;
-    //    waypointPosition.y = transform.position.y;
-    //    Vector3 dir = waypointPosition - transform.position;
-    //    if (dir.magnitude < distance)
-    //    {
-    //        if (_nextWp + _indexModifier >= Waypoints.Count || _nextWp + _indexModifier < 0)
-    //            _indexModifier *= -1;
-    //        _nextWp += _indexModifier;
-    //    }
-    //    Move(dir.normalized);
-    //    // return dir;
-
-    //}
-
-    public bool LineOfSight(Transform target)
+    public void GoToWaypoint()
     {
 
-        Vector3 diff = transform.position - target.transform.position;
-        float distance = diff.magnitude;
-        if (distance > LOSRadius) return false;
-        float angleToTarget = Vector3.Angle(transform.position, diff.normalized);
-        if (angleToTarget > angle / 2) return false;
-        if (Physics.Raycast(transform.position, diff, distance, layer)) return true;
-
-        return true;
+        var waypoint = Waypoints[_nextWp];
+        var waypointPosition = waypoint.position;
+        waypointPosition.y = transform.position.y;
+        Vector3 dir = waypointPosition - transform.position;
+        if (dir.magnitude < distance)
+        {
+            if (_nextWp + _indexModifier >= Waypoints.Count || _nextWp + _indexModifier < 0)
+                _indexModifier *= -1;
+            _nextWp += _indexModifier;
+        }
+        Move(dir.normalized);
+        // return dir;
 
     }
 
-    //public bool ShouldIAttack()
-    //{
-
-    //    return attackTarget = (Vector3.Distance(transform.position, _target.transform.position) <= attackRange) ? true : false;
-    //}
-
     public void APunch()
     {
-
+        _bossEnemyAnim.APunchAnimation();
     }
 
     public void BPunch()
     {
-
+        _bossEnemyAnim.BPunchAnimation();
     }
 
     public void Kick()
     {
-
+        _bossEnemyAnim.KickAnimation();
     }
 
     public void Block()
     {
-
+        _bossEnemyAnim.BlockAnimation();
     }
 
     public void GetDamage()
     {
-
+        _bossEnemyAnim.DamageAnimation();
     }
 
     public void Idle()
     {
-
+        _bossEnemyAnim.IdleAnimation();
     }
 
-    public void Die()
+    public void Died()
     {
+        _bossEnemyAnim.DeathAnimation();
+    }
 
+    public void Seek()
+    {
+        obsAvoidanceBehaviour.move = false;
+        if (lineOfSight.Target != null)
+        {
+            seekBehaviour.move = true;
+
+            if (Vector3.Distance(transform.position, lineOfSight.Target.position) > attackRange)
+            {
+                seekBehaviour.move = true;
+                _bossEnemyAnim.RunAnimation(true);
+                Debug.Log("Seek Animation");
+            }
+            else
+            {
+                seekBehaviour.move = false;
+                _bossEnemyAnim.RunAnimation(false);
+            }
+            //combat.attack = true;
+        }
+    }
+
+    //public void IdleBehaviour()
+    //{
+    //    seekBehaviour.move = false;
+    //    obsAvoidanceBehaviour.move = false;
+    //    _idleTimer += Time.deltaTime;
+    //    _bossEnemyAnim.MoveAnimation(false);
+
+    //    if (_idleTimer >= _idleCountdown + 5)
+    //    {
+    //        _idleTimer = 0;
+    //    }
+
+    //    //combat.attack = false;
+    //}
+
+    public void Patrolling()
+    {
+        seekBehaviour.move = false;
+        obsAvoidanceBehaviour.move = true;
+        _idleTimer += Time.deltaTime;
+        _bossEnemyAnim.MoveAnimation(true);
+        //combat.attack = false;
     }
 }

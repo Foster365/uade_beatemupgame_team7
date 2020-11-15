@@ -19,11 +19,6 @@ public class EnemyController : MonoBehaviour
     public Transform target;
     //
 
-    //FSM variables
-    FSM<string> _fsm;
-    Rigidbody _rigidbody;
-    //
-
     //Idle variables
     public float idleTimer;
     //
@@ -51,12 +46,11 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        //_rigidbody = GetComponent<Rigidbody>();
         _enemyAnimations = GetComponent<EnemyAnimations>();
     }
     private void Start()
     {
-        _fsm = new FSM<string>();
 
         sight = gameObject.GetComponent<LineOfSight>();
         seek = gameObject.GetComponent<Seek>();
@@ -72,7 +66,7 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         initialNode.Execute();
-        _fsm.OnUpdate();
+
     }
 
     private void CreateDecisionTree()
@@ -92,25 +86,6 @@ public class EnemyController : MonoBehaviour
         QuestionNode doIHaveHealth = new QuestionNode(() => _enemy.currentHealth >= 0, doIHaveTarget, Die);
 
         initialNode = doIHaveHealth;
-    }
-
-    private void AttackFSM()
-    {
-        KickStateEnemy<string> kickStateEnemy = new KickStateEnemy<string>(_enemy, _enemyAnimations);
-        PunchStateEnemy<string> punchStateEnemy = new PunchStateEnemy<string>(_enemy, _enemyAnimations);
-        BlockStateEnemy<string> blockStateEnemy = new BlockStateEnemy<string>(_enemy, _enemyAnimations);
-        AttackStateEnemy<string> attackStateEnemy = new AttackStateEnemy<string>(_enemy, _enemyAnimations, _fsm, "PunchStateEnemy", "KickStateEnemy");
-
-
-        attackStateEnemy.AddTransition("PunchStateEnemy", punchStateEnemy);
-        punchStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
-        attackStateEnemy.AddTransition("KickStateEnemy", kickStateEnemy);
-        kickStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
-        attackStateEnemy.AddTransition("BlockStateEnemy", blockStateEnemy);
-        blockStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
-
-        _fsm.SetInit(attackStateEnemy);
-
     }
 
     private void Seek()

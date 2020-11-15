@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DieStateEnemy<T>:FSMState<T>
 {
-    Enemy _enemy;
-    EnemyAnimations _enemyAnimations;
-    public DieStateEnemy(Enemy enemy, EnemyAnimations enemyAnimations)
+
+    EnemyBossAnim _enemyBossAnimations;
+    public DieStateEnemy(EnemyBossAnim enemyBossAnimations)
     {
-        _enemy=enemy;
-        _enemyAnimations=enemyAnimations;
+
+        _enemyBossAnimations = enemyBossAnimations;
     }
 
     public override void Awake()
@@ -19,6 +19,7 @@ public class DieStateEnemy<T>:FSMState<T>
     public override void Execute()
     {
         Debug.Log("Enemy DieState Execute");
+        _enemyBossAnimations.DeathAnimation();
     }
     public override void Sleep()
     {

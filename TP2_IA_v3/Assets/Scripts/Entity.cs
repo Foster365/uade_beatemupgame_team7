@@ -15,7 +15,6 @@ public class Entity : MonoBehaviour
     public AudioClip hitFX;
     public AudioClip deathFX;
 
-    private HealthUI healthUIPlayer;
     public Animator _anim;
     private bool _isDead = false;
 
@@ -26,17 +25,11 @@ public class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
 
-        if (isPlayer)
-            healthUIPlayer = GetComponent<HealthUI>();
-
     }
     public void TakeDamage(float dm)
     {
         currentHealth -= dm;
         AudioSource.PlayClipAtPoint(hitFX, transform.position);
-
-        if (isPlayer)
-            healthUIPlayer.DisplayHealth(currentHealth);
 
         if (currentHealth <= 0f)
         {

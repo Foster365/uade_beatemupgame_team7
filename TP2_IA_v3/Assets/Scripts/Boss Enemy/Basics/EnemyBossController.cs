@@ -16,7 +16,7 @@ public class EnemyBossController : MonoBehaviour
     //
 
     //Line of sight variables
-    public Transform target;
+    //public Transform target;
     //
 
     //FSM variables
@@ -32,66 +32,72 @@ public class EnemyBossController : MonoBehaviour
     public float iterations;
     //
 
-    //Roulette _roulette;
-    //Dictionary<Node, int> _rouletteNodes = new Dictionary<Node, int>();
-    //Node _initNode;
-    public EnemyAnimations _enemyAnimations;
+    EnemyBossAnim _enemyBossAnim;
 
     private Node initialNode;
-    LineOfSight sight;
+    //LineOfSight sight;
+
+    [SerializeField]
     EnemyBoss _enemyBoss;
-
-    public Transform _player;
-
-    Seek seekBehaviour;
-    ObstacleAvoidance obsAvoidanceBehaviour;
-    LineOfSight lineOfSight;
+    [SerializeField]
+    Player _player;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _enemyAnimations = GetComponent<EnemyAnimations>();
-    }
-    private void Start()
-    {
-        _fsm = new FSM<string>();
-
-        seekBehaviour = gameObject.GetComponent<Seek>();
-        obsAvoidanceBehaviour= gameObject.GetComponent<ObstacleAvoidance>();
-        lineOfSight = gameObject.GetComponent<LineOfSight>();
+        //_enemyBoss = GameObject.FindGameObjectWithTag(CharacterTags.BOSSENEMY_TAG).gameObject;
+        _enemyBossAnim = gameObject.GetComponent<EnemyBossAnim>();
+        //_player = GetComponent<Player>();
 
         //sight = gameObject.GetComponent<LineOfSight>();
         //seek = gameObject.GetComponent<Seek>();
         //flee = gameObject.GetComponent<Flee>();
         //obstacleavoidance = gameObject.GetComponent<ObstacleAvoidance>();
-        ////combat = gameObject.GetComponent<EnemyCombat>();
-        //_enemy = gameObject.GetComponent<Enemy>();
-        //timer = 0;
 
+    }
+    private void Start()
+    {
+        _fsm = new FSM<string>();
+        FSM();
     }
 
     private void Update()
     {
-        initialNode.Execute();
         _fsm.OnUpdate();
     }
 
-    private void AttackFSM()
+    private void FSM()
     {
-        //KickStateEnemy<string> kickStateEnemy = new KickStateEnemy<string>(_enemy, _enemyAnimations);
-        //PunchStateEnemy<string> punchStateEnemy = new PunchStateEnemy<string>(_enemy, _enemyAnimations);
-        //BlockStateEnemy<string> blockStateEnemy = new BlockStateEnemy<string>(_enemy, _enemyAnimations);
-        //AttackStateEnemy<string> attackStateEnemy = new AttackStateEnemy<string>(_enemy, _enemyAnimations, _fsm, "PunchStateEnemy", "KickStateEnemy");
+        IdleStateEnemy<string> idleStateEnemy = new IdleStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "PatrolStateEnemy", "HitStateEnemy"/*, "BlockStateEnemy"*/, "DieStateEnemy");
+        PatrolStateEnemy<string> patrolStateEnemy = new PatrolStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "IdleStateEnemy", "SeekStateEnemy");
+        SeekStateEnemy<string> seekStateEnemy = new SeekStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "IdleStateEnemy", "AttackStateEnemy");
+        AttackStateEnemy<string> attackStateEnemy = new AttackStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "SeekStateEnemy", "BlockStateEnemy", "HitStateEnemy", "DieStateEnemy");
+        BlockStateEnemy<string> blockStateEnemy = new BlockStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "IdleStateEnemy", "AttackStateEnemy");
+        HitStateEnemy<string> hitStateEnemy = new HitStateEnemy<string>(_enemyBoss, _enemyBossAnim, _player, _fsm, "AttackStateEnemy", "IdleStateEnemy", "BlockStateEnemy");
+        DieStateEnemy<string> dieStateEnemy = new DieStateEnemy<string>(_enemyBossAnim);
 
+        idleStateEnemy.AddTransition("PatrolStateEnemy", patrolStateEnemy);
+        patrolStateEnemy.AddTransition("IdleStateEnemy", idleStateEnemy);
 
-        //attackStateEnemy.AddTransition("PunchStateEnemy", punchStateEnemy);
-        //punchStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
-        //attackStateEnemy.AddTransition("KickStateEnemy", kickStateEnemy);
-        //kickStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
-        //attackStateEnemy.AddTransition("BlockStateEnemy", blockStateEnemy);
-        //blockStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
+        patrolStateEnemy.AddTransition("SeekStateEnemy", seekStateEnemy);
+        seekStateEnemy.AddTransition("PatrolStateEnemy", patrolStateEnemy);
 
-        //_fsm.SetInit(attackStateEnemy);
+        seekStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
+        attackStateEnemy.AddTransition("SeekStateEnemy", seekStateEnemy);
+        attackStateEnemy.AddTransition("BlockStateEnemy", blockStateEnemy);
+
+        //blockStateEnemy.AddTransition("IdleStateEnemy", idleStateEnemy);
+        blockStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
+
+        idleStateEnemy.AddTransition("HitStateEnemy", hitStateEnemy);
+        hitStateEnemy.AddTransition("IdleStateEnemy", idleStateEnemy);
+        //hitStateEnemy.AddTransition("AttackStateEnemy", attackStateEnemy);
+        hitStateEnemy.AddTransition("BlockStateEnemy", blockStateEnemy);
+
+        attackStateEnemy.AddTransition("DieStateEnemy", dieStateEnemy);
+        idleStateEnemy.AddTransition("DieStateEnemy", dieStateEnemy);
+
+        _fsm.SetInit(idleStateEnemy);
 
     }
 

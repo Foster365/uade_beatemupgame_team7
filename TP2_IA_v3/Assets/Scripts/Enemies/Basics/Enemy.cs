@@ -140,19 +140,19 @@ public class Enemy : Entity
 
     }
 
-    public bool LineOfSight(Transform target)
-    {
+    //public bool LineOfSight(Transform target)
+    //{
 
-        Vector3 diff = transform.position - target.transform.position;
-        float distance = diff.magnitude;
-        if (distance > LOSRadius) return false;
-        float angleToTarget = Vector3.Angle(transform.position, diff.normalized);
-        if (angleToTarget > angle / 2) return false;
-        if (Physics.Raycast(transform.position, diff, distance, layer)) return true;
+    //    Vector3 diff = transform.position - target.transform.position;
+    //    float distance = diff.magnitude;
+    //    if (distance > LOSRadius) return false;
+    //    float angleToTarget = Vector3.Angle(transform.position, diff.normalized);
+    //    if (angleToTarget > angle / 2) return false;
+    //    if (Physics.Raycast(transform.position, diff, distance, layer)) return true;
 
-        return true;
+    //    return true;
 
-    }
+    //}
 
     public bool ShouldIAttack()
     {

@@ -4,28 +4,52 @@ using UnityEngine;
 
 public class PatrolStateEnemy<T>:FSMState<T>
 {
-    Enemy _enemy;
-    EnemyAnimations _enemyAnimations;
-    public PatrolStateEnemy(Enemy enemy, EnemyAnimations enemyAnimations)
+    EnemyBoss _enemyBoss;
+    EnemyBossAnim _enemyBossAnimations;
+    Player _target;
+
+    FSM<T> _fsm;
+    T _idleStateEnemy;
+    T _seekStateEnemy;
+
+    public PatrolStateEnemy(EnemyBoss enemyBoss, EnemyBossAnim enemyBossAnimations, Player target, FSM<T> fsm, T idleStateEnemy, T seekStateEnemy)
     {
-        _enemy=enemy;
-        _enemyAnimations=enemyAnimations;
+        _enemyBoss = enemyBoss;
+        _enemyBossAnimations = enemyBossAnimations;
+        _target = target;
+
+        _fsm = fsm;
+        _idleStateEnemy = idleStateEnemy;
+        _seekStateEnemy = seekStateEnemy;
+
     }
     
     public override void Awake()
     {
-        Debug.Log("Enemy Idle State Awake");
-    }
+        Debug.Log("Enemy Patrol State Awake");
 
+    }
     public override void Execute()
     {
-        Debug.Log("Enemy Idle State Execute");
-        _enemy.GoToWaypoint();
-        _enemyAnimations.MoveAnimation(true);
+        _enemyBoss.Patrolling();
+        if (_enemyBoss.Line_Of_Sight.targetInSight)
+        {
+            _fsm.Transition(_seekStateEnemy);
+            Debug.Log("Sight");
+        }
+        else if(!_enemyBoss.Line_Of_Sight.targetInSight)
+            Debug.Log("Not in sight");
+        //_enemyBoss.GoToWaypoint();
+        //_enemyBossAnimations.MoveAnimation(true);
+        Debug.Log("Enemy Patrol State Execute");
+        //_enemyBoss.GoToWaypoint();
+        //_enemyBossAnimations.MoveAnimation(true);
+        //Poner iteraciones. Valor de enemycontroller que vaya disminuyendo
     }
 
     public override void Sleep()
     {
-        Debug.Log("Enemy Idle State Sleep");
+        Debug.Log("Enemy Patrol State Sleep");
     }
+    
 }

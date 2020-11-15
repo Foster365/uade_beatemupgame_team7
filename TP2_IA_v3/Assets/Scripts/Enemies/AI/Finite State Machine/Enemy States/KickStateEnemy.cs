@@ -5,12 +5,12 @@ using UnityEngine;
 public class KickStateEnemy<T>:FSMState<T>
 {
 
-    Enemy _enemy;
-    EnemyAnimations _enemyAnimations;
+    EnemyBoss _enemy;
+    EnemyBossAnim _enemyAnimations;
 
     Player _player;
     Kick<Enemy> kickAtttack;
-    public KickStateEnemy(Enemy enemy, EnemyAnimations enemyAnimations)
+    public KickStateEnemy(EnemyBoss enemy, EnemyBossAnim enemyAnimations)
     {
         _enemy=enemy;
         _enemyAnimations=enemyAnimations;
@@ -20,7 +20,7 @@ public class KickStateEnemy<T>:FSMState<T>
     public override void Awake()
     {
         Debug.Log("Enemy KickState Awake");
-        kickAtttack=new Kick<Enemy>(_enemy);
+
     }
 
     public override void Execute()

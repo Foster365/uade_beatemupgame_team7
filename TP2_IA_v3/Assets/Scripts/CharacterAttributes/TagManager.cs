@@ -40,3 +40,20 @@ public class UtilitiesTags
     public const string UNTAGGED_TAG = "Untagged";
 
 }
+
+public class BossEnemyAnimationTags
+{
+
+    public const string BOSSENEMY_MOVEMENT = "Moving";
+    public const string BOSSENEMY_SEEK = "Seek";
+
+
+    public const string BOSSENEMY_APUNCH = "APunch";
+    public const string BOSSENEMY_BPUNCH = "BPunch";
+    public const string BOSSENEMY_KICK = "Kick";
+    public const string BOSSENEMY_BLOCK = "Block";
+
+    public const string BOSSENEMY_IDLE = "Idle";
+    public const string BOSSENEMY_DAMAGED = "Damaged";
+    public const string BOSSENEMY_DEATH = "Death";
+}
