@@ -19,6 +19,9 @@ public class AttackStateEnemy<T>:FSMState<T>
     T _hitStateEnemy;
     T _dieStateEnemy;
 
+    float currentAttackTime = 0;
+    public float defaultAttackTime = 2f;
+
     public AttackStateEnemy(EnemyBoss enemyBoss, EnemyBossAnim enemyBossAnim, Player target, FSM<T> fsm, T seekStateEnemy/*, T blockStateEnemy*/,
     T hitStateEnemy, T dieStateEnemy)
     {
@@ -44,7 +47,15 @@ public class AttackStateEnemy<T>:FSMState<T>
     public override void Execute()
     {
         Debug.Log("Enemy AttackState Execute");
-        RouletteAction();
+        currentAttackTime += Time.deltaTime;
+
+        if (currentAttackTime >= defaultAttackTime)
+        {
+            RouletteAction();
+
+            currentAttackTime = 0;
+        }
+
         if(Vector3.Distance(_enemyBoss.transform.position, _target.transform.position) >= _enemyBoss.attackRange)
             _fsm.Transition(_seekStateEnemy);
         //else if ()
@@ -77,7 +88,7 @@ public class AttackStateEnemy<T>:FSMState<T>
         //ActionNode Kick = new ActionNode(_enemyBoss.Kick);
 
         _rouletteNodes.Add(aPunch, 30);
-        _rouletteNodes.Add(bPunch, 35);
+        _rouletteNodes.Add(bPunch, 85);
         //_rouletteNodes.Add(Kick, 50);
 
         ActionNode rouletteAction = new ActionNode(RouletteAction);

@@ -29,7 +29,7 @@ public class EnemyBossAnim : MonoBehaviour
 
     public void BPunchAnimation()
     {
-        _animator.SetTrigger(BossEnemyAnimationTags.BOSSENEMY_APUNCH);
+        _animator.SetTrigger(BossEnemyAnimationTags.BOSSENEMY_BPUNCH);
     }
 
     public void KickAnimation()
