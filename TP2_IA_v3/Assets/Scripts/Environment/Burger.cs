@@ -15,6 +15,10 @@ public class Burger : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             _player.currentHealth += 50;
+            if (_player.currentHealth > _player.maxHealth)
+            {
+                _player.currentHealth = _player.maxHealth;
+            }
             Destroy(gameObject);
         }
     }

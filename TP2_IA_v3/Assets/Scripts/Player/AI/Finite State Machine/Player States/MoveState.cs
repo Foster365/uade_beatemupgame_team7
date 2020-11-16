@@ -31,6 +31,7 @@ public class MoveState<T> : FSMState<T>
 
     public override void Execute()
     {
+        
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
         Vector3 dir = new Vector3(h, 0, v);

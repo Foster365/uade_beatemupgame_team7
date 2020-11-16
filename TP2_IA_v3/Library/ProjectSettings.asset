@@ -42,6 +42,8 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 21300000, guid: 46bdeeb0040e59f479f1675126115353, type: 3}
     duration: 5
+  - logo: {fileID: 21300000, guid: 265b35f716b18bd469e28860be0b5a8d, type: 3}
+    duration: 6.6
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -276,7 +278,14 @@ PlayerSettings:
   AndroidAppBundleSizeToValidate: 150
   resolutionDialogBanner: {fileID: 2800000, guid: 46bdeeb0040e59f479f1675126115353,
     type: 3}
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 5657191649a9a10408328403370de1f8, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons: []
   m_BuildTargetBatching:
   - m_BuildTarget: Standalone

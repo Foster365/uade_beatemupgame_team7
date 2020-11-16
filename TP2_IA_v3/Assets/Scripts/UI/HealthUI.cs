@@ -7,12 +7,12 @@ public class HealthUI : MonoBehaviour
 {
 
     private Image pjHealthUI;
-    private Image bossHealthUI;
+    public Image bossHealthUI;
 
     private void Awake()
     {
         pjHealthUI = GameObject.FindWithTag(UtilitiesTags.HEALTH_UI_TAG).GetComponent<Image>();
-        bossHealthUI = GameObject.FindWithTag(UtilitiesTags.BOSS_HEALTH_UI_TAG).GetComponent<Image>();
+       // bossHealthUI = GameObject.FindWithTag(UtilitiesTags.BOSS_HEALTH_UI_TAG).GetComponent<Image>();
     }
 
     public void DisplayPlayerHealth(float value)
@@ -29,7 +29,7 @@ public class HealthUI : MonoBehaviour
         value /= 300f;
         if (value < 0f)
             value = 0f;
-
-        bossHealthUI.fillAmount = value;
+        if (bossHealthUI.isActiveAndEnabled) { bossHealthUI.fillAmount = value; }
+        
     }
 }
