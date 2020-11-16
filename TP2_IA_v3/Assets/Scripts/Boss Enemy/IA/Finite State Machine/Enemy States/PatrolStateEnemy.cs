@@ -12,6 +12,9 @@ public class PatrolStateEnemy<T>:FSMState<T>
     T _idleStateEnemy;
     T _seekStateEnemy;
 
+    float patrolCounter;
+    float maxPatrolCounter = 10f;
+
     public PatrolStateEnemy(EnemyBoss enemyBoss, EnemyBossAnim enemyBossAnimations, Player target, FSM<T> fsm, T idleStateEnemy, T seekStateEnemy)
     {
         _enemyBoss = enemyBoss;
@@ -26,20 +29,22 @@ public class PatrolStateEnemy<T>:FSMState<T>
     
     public override void Awake()
     {
+        patrolCounter = 0f;
        // Debug.Log("Enemy Patrol State Awake");
 
     }
     public override void Execute()
     {
+        patrolCounter+=Time.deltaTime;
         _enemyBoss.Patrolling();
-        if (_enemyBoss.Line_Of_Sight.targetInSight)
+        // _enemyBoss.GoToWaypoint();
+        if (_enemyBoss.Line_Of_Sight.targetInSight && patrolCounter <= maxPatrolCounter)
         {
             _fsm.Transition(_seekStateEnemy);
             Debug.Log("Sight");
         }
-      //  else if(!_enemyBoss.Line_Of_Sight.targetInSight)
-           // Debug.Log("Not in sight");
-        //_enemyBoss.GoToWaypoint();
+       else if(!_enemyBoss.Line_Of_Sight.targetInSight && patrolCounter >= maxPatrolCounter)
+           _fsm.Transition(_idleStateEnemy);
         //_enemyBossAnimations.MoveAnimation(true);
       //  Debug.Log("Enemy Patrol State Execute");
         //_enemyBoss.GoToWaypoint();
@@ -49,6 +54,7 @@ public class PatrolStateEnemy<T>:FSMState<T>
 
     public override void Sleep()
     {
+        patrolCounter = 0;
        // Debug.Log("Enemy Patrol State Sleep");
     }
     

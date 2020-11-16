@@ -58,10 +58,6 @@ public class AttackStateEnemy<T>:FSMState<T>
 
         if(Vector3.Distance(_enemyBoss.transform.position, _target.transform.position) >= _enemyBoss.attackRange)
             _fsm.Transition(_seekStateEnemy);
-        //else if ()
-        //    _fsm.Transition(_blockStateEnemy);
-        //else if (_target.TakeDamage(_target.punchDamage) || _target.TakeDamage(_target.kickDamage))
-            //_fsm.Transition(_hitStateEnemy);
         else if (_enemyBoss.currentHealth <= 0)
             _fsm.Transition(_dieStateEnemy);
 

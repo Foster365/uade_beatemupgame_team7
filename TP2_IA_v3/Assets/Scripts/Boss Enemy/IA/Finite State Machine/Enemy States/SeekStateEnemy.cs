@@ -9,17 +9,17 @@ public class SeekStateEnemy<T>:FSMState<T>
     Player _target;
 
     FSM<T> _fsm;
-    T _idleStateEnemy;
+    T _patrolStateEnemy;
     T _attackStateEnemy;
 
-    public SeekStateEnemy(EnemyBoss enemyBoss, EnemyBossAnim enemyBossAnimations, Player target, FSM<T> fsm, T idleStateEnemy, T attackStateEnemy)
+    public SeekStateEnemy(EnemyBoss enemyBoss, EnemyBossAnim enemyBossAnimations, Player target, FSM<T> fsm, T patrolStateEnemy, T attackStateEnemy)
     {
         _enemyBoss = enemyBoss;
         _enemyBossAnimations = enemyBossAnimations;
         _target = target;
 
         _fsm = fsm;
-        _idleStateEnemy = idleStateEnemy;
+        _patrolStateEnemy = patrolStateEnemy;
         _attackStateEnemy = attackStateEnemy;
 
     }
@@ -34,7 +34,7 @@ public class SeekStateEnemy<T>:FSMState<T>
 
         //_enemyBossAnimations.MoveAnimation(true);
 
-        //var attackDistance = Vector3.Distance(_enemyBoss.transform.position, _target.transform.position);
+        // var attackDistance = Vector3.Distance(_enemyBoss.transform.position, _target.transform.position);
         _enemyBoss.Seek();
         Debug.Log("Enemy SeekState Execute");
         if (Vector3.Distance(_enemyBoss.transform.position, _target.transform.position) <= _enemyBoss.attackRange)
@@ -44,7 +44,7 @@ public class SeekStateEnemy<T>:FSMState<T>
         }
         else if (Vector3.Distance(_enemyBoss.transform.position, _target.transform.position) >= _enemyBoss.attackRange)
         {
-            _fsm.Transition(_idleStateEnemy);
+            _fsm.Transition(_patrolStateEnemy);
         }
 
     }

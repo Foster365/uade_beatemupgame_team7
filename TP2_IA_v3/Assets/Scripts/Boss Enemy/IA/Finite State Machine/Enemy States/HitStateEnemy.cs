@@ -34,21 +34,16 @@ public class HitStateEnemy<T> : FSMState<T>
     public override void Awake()
     {
         
-
-
     }
 
     public override void Execute()
     {
-        //Debug.Log("Enemy HitState Execute");
         _enemyBossAnimations.DamageAnimation();
-
-
     }
 
     public override void Sleep()
     {
-        Debug.Log("Enemy KickState Sleep");        
+            
     }
 
 }

@@ -19,7 +19,7 @@ public class DieStateEnemy<T>:FSMState<T>
     public override void Execute()
     {
         Debug.Log("Enemy DieState Execute");
-        _enemyBossAnimations.DeathAnimation();
+        // _enemyBossAnimations.DeathAnimation();
     }
     public override void Sleep()
     {
