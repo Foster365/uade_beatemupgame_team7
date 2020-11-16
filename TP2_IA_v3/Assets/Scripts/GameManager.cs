@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject youWinUI;
     public GameObject timeOutUI;
     public GameObject youDiedUI;
+    public GameObject backToMenu;
 
     void Awake()
     {
@@ -24,14 +25,17 @@ public class GameManager : MonoBehaviour
         if (_player.isDead)
         {
             youDiedUI.SetActive(true);
+            backToMenu.SetActive(true);
         }
         else if (_timer.secondsLeft <= 0)
         {
             timeOutUI.SetActive(true);
+            backToMenu.SetActive(true);
         }
         else if (_boss.isDead)
         {
             youWinUI.SetActive(true);
+            backToMenu.SetActive(true);
         }
 
         
