@@ -9,7 +9,7 @@ public class BaseballBat : MonoBehaviour
 
     private void Start()
     {
-        _player = GetComponent<Player>();
+        _player = FindObjectOfType<Player>();
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -34,6 +34,11 @@ public class Player : Entity, IMove
         
         
     }
+
+    void Start()
+    {
+        ChangePowerUp(PowerUps.None);
+    }
    
     public void ChangePowerUp(PowerUps powerUps)
     {
@@ -41,40 +46,41 @@ public class Player : Entity, IMove
     }
     private void Update()
     {
-        //switch (_currentPU)
-        //{
-        //    case PowerUps.BaseballBat:
-        //        punchDamage += 10;
-        //        float time = 5;
-        //        time -= Time.deltaTime;
-        //        if (time <= 0)
-        //        {
-        //            ChangePowerUp(PowerUps.None);
-        //        }
-        //        break;
+        switch (_currentPU) //Esto debería ser un método y no actualizarse todo el tiempo
+        {
+            case PowerUps.BaseballBat:
+                punchDamage = 20;
+                float time = 15;
+                time -= Time.deltaTime;
+                if (time <= 0)
+                {
+                    ChangePowerUp(PowerUps.None);
+                }
+                break;
 
-        //    case PowerUps.Knife:
-        //        punchDamage += 5;
-        //        time = 5;
-        //        time -= Time.deltaTime;
-        //        if (time <= 0)
-        //        {
-        //            ChangePowerUp(PowerUps.None);
-        //        }
-        //        break;
+            case PowerUps.Knife:
+                punchDamage = 15;
+                time = 5;
+                time -= Time.deltaTime;
+                if (time <= 0)
+                {
+                    ChangePowerUp(PowerUps.None);
+                }
+                break;
 
-        //    case PowerUps.Star:
-        //        time = 5;
-        //        time -= Time.deltaTime;
-        //        if (time <= 0)
-        //        {
-        //            ChangePowerUp(PowerUps.None);
-        //        }
-        //        break;
+            case PowerUps.Star:
+                time = 5;
+                time -= Time.deltaTime;
+                if (time <= 0)
+                {
+                    ChangePowerUp(PowerUps.None);
+                }
+                break;
 
-        //    case PowerUps.None:
-        //        break;
-        //}
+            case PowerUps.None:
+                punchDamage = 5f;
+                break;
+        }
     }
 
     public void Jump()

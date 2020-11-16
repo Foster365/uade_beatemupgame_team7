@@ -4,7 +4,7 @@ using UnityEngine;
 public class Enemy : Entity
 {
     
-    public bool dead;
+  
     public float movementSpeed;
     bool _isMoving;
 

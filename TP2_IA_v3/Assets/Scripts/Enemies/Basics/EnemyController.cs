@@ -65,7 +65,11 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        initialNode.Execute();
+        if (!_enemy.isDead)
+        {
+            initialNode.Execute();
+        }
+        
 
     }
 
@@ -111,7 +115,7 @@ public class EnemyController : MonoBehaviour
     private void Fleeing()
     {
         flee.move = true;
-        if (_enemy.dead)
+        if (_enemy.isDead)
         {
             flee.move = false;
         }
